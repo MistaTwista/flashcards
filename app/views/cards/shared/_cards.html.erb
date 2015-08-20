@@ -1,0 +1,24 @@
+<div class="row">
+<% @cards.each do |card| %>
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <span class="panel-title"><%= link_to card.original_text, card %></span>
+        <span class="pull-right">#<%= card.id %></span>
+        <%= link_to(card, method: :delete, data: { confirm: "Точно удалить?" }, :title => 'Delete') do %>
+          <span class="glyphicon glyphicon-remove white close" aria-hidden="true"></span>
+        <% end %>
+        <%= link_to(edit_card_path(card), :title => 'Edit') do %>
+          <span class="glyphicon glyphicon-edit white close" aria-hidden="true"></span>
+        <% end %>
+      </div>
+      <div class="panel-body">
+        <%= card.translated_text %>
+      </div>
+      <div class="panel-footer">
+        <%= card.review_date.strftime("%d/%m/%Y") %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
