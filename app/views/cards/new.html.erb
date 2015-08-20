@@ -1,35 +1,5 @@
 <h1>Добавить карточку</h1>
-<%= form_for :card, url: cards_path do |f| %>
-  <% if @card.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-        <p><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</p>
-      <ul>
-        <% @card.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <p class="form-group">
-    <%= f.label :original_text, 'Оригинал' %>
-    <%= f.text_field :original_text, class: 'form-control' %>
-  </p>
-
-  <p class="form-group">
-    <%= f.label :translated_text, 'Перевод' %>
-    <%= f.text_field :translated_text, class: 'form-control' %>
-  </p>
-
-  <p class="form-group">
-    <%= f.label :review_date %>
-    <%= f.date_field :review_date, placeholder: "Н-р: 31.12.2000", class: 'form-control' %>
-  </p>
-
-  <p>
-    <%= f.submit 'Сохранить', :class => 'btn btn-primary' %>
-  </p>
-
-<% end %>
+<%= render "cards/shared/cardform" %>
 
 <%= link_to 'Все карточки', cards_path %>

@@ -1,39 +1,6 @@
 <h1>Редактируем карточку: <%= @card.original_text %></h1>
 
-<%= form_for :card, url: card_path(@card), method: :patch do |f| %>
-  <% if @card.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-        <p><%= pluralize(@card.errors.count, "error") %> prohibited
-          this card from being saved:
-        </p>
-      <ul>
-        <% @card.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <p class="form-group">
-    <%= f.label :original_text, 'Оригинал' %><br>
-    <%= f.text_field :original_text, class: 'form-control' %>
-  </p>
-
-  <p class="form-group">
-    <%= f.label :translated_text, 'Перевод' %><br>
-    <%= f.text_field :translated_text, class: 'form-control' %>
-  </p>
-
-  <p class="form-group">
-    <%= f.label :review_date %>
-    <%= f.date_field :review_date, class: 'form-control' %>
-  </p>
-
-  <p>
-    <%= f.submit 'Сохранить', :class => 'btn btn-primary' %>
-  </p>
-
-<% end %>
+<%= render "cards/shared/cardform" %>
 
 <p><%= link_to "Назад к карте", card_path %></p>
 <p><%= link_to 'Все карточки', cards_path %></p>

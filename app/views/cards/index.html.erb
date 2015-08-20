@@ -7,6 +7,7 @@
     <div class="panel panel-primary">
       <div class="panel-heading">
         <span class="panel-title"><%= link_to card.original_text, card %></span>
+        <span class="pull-right">#<%= card.id %></span>
         <%= link_to(card, method: :delete, data: { confirm: "Точно удалить?" }, :title => 'Delete') do %>
           <span class="glyphicon glyphicon-remove white close" aria-hidden="true"></span>
         <% end %>
