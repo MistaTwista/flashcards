@@ -1,6 +1,6 @@
 <h1>Редактируем карточку: <%= @card.original_text %></h1>
 
-<%= render "cards/shared/cardform" %>
+<%= render "form", card: @card %>
 
 <p><%= link_to "Назад к карте", card_path %></p>
 <p><%= link_to 'Все карточки', cards_path %></p>

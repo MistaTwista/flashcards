@@ -1,4 +1,6 @@
 <h1>Карты для изучения</h1>
 <p>Всего: <%= @cards.count %></p>
-<%= render "cards/shared/cards", collection: @cards %>
+
+<%= render "cards", cards: @cards %>
+
 <p><%= link_to "Новая карточка", new_card_path %></p>
