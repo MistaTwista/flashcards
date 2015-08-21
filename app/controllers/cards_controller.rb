@@ -43,11 +43,11 @@ class CardsController < ApplicationController
   private
 
   def now_plus_days(days)
-    Time.new+days_in_sec(days)
+    Time.new + days_in_sec(days)
   end
 
   def days_in_sec(days)
-    return days*24*60*60
+    days * 24 * 60 * 60
   end
 
   def find_card
