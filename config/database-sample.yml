@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: root
+  password: root
+
+development:
+  <<: *default
+  database: flashcards
+
+test:
+  <<: *default
+  database: flashcards_test
+
+production:
+  <<: *default
+  database: flashcards_prod
