@@ -6,6 +6,8 @@ class CardsController < ApplicationController
   end
 
   def show
+    @card.review_date = now_plus_days(3)
+    @card.save
   end
 
   def new
@@ -14,6 +16,7 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
+    @card.review_date = now_plus_days(3)
     if @card.save
       redirect_to @card
     else
@@ -38,6 +41,14 @@ class CardsController < ApplicationController
   end
 
   private
+
+  def now_plus_days(days)
+    Time.new+days_in_sec(days)
+  end
+
+  def days_in_sec(days)
+    return days*24*60*60
+  end
 
   def find_card
     @card = Card.find(params[:id])
