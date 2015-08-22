@@ -1,5 +1,3 @@
-<h1>Добавить карточку</h1>
+<h1><%= t "cards.#{params[:action]}.h1" %></h1>
 
 <%= render "form", card: @card %>
-
-<%= link_to 'Все карточки', cards_path %>

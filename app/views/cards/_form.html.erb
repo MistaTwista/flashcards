@@ -1,4 +1,4 @@
-<%= simple_form_for @card do |f| %>
+<%= simple_form_for @card, html: { style: 'margin-bottom: 1em;' } do |f| %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
   <%= f.button :submit %>

@@ -1,8 +1,12 @@
 class Card < ActiveRecord::Base
   before_validation :normalize_fields
-  after_validation :console_message, on: :create
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_equal_fields
+
+  after_touch do |card|
+    card.review_date = Time.now+3.days
+    card.save
+  end
 
   protected
 
@@ -13,11 +17,7 @@ class Card < ActiveRecord::Base
   end
 
   def clean(field)
-    field.delete(" ").mb_chars.downcase.to_s
-  end
-
-  def console_message
-    puts "Creating new card "+self.original_text+"\/"+self.translated_text
+    field.squish.mb_chars.downcase.to_s
   end
 
   def normalize_fields

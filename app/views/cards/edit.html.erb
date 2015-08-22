@@ -1,6 +1,5 @@
-<h1>Редактируем карточку: <%= @card.original_text %></h1>
+<h1><%= t "cards.#{params[:action]}.h1", card_name: @card.original_text %></h1>
 
 <%= render "form", card: @card %>
 
-<p><%= link_to "Назад к карте", card_path %></p>
-<p><%= link_to 'Все карточки', cards_path %></p>
+<p><%= link_to I18n.t('menu.back_to_card'), card_path %></p>

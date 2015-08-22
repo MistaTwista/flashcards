@@ -1,5 +1,10 @@
 <div class="jumbotron">
-  <h1>Флешкер &mdash; самые полезные карты</h1>
-  <p>Все мы знаем карты игральные, но азартные игры не единственное применение карт. Флешкер &mdash; проект нацеленый на обучение английскому языку при помощи карточек.</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Узнать подробности</a></p>
+  <h1><%= t('home.header') %></h1>
+  <p><%= t('home.info') %></p>
+  <ul>
+  <% t('home.benefits').each_line do |benefit| %>
+    <li><%= benefit %></li>
+  <% end %>
+  </ul>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button"><%= t('home.detail_btn') %></a></p>
 </div>

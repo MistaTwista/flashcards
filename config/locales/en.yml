@@ -20,4 +20,20 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  name: "Flashcards"
+  menu:
+    all_cards: "All cards"
+    add_card: "Add card"
+    account: "Account"
+    sign_in: "Sign in"
+    sign_up: "Sign up"
+    edit_card: "Edit card"
+    back_to_card: "Back to card"
+    delete: "Delete"
+    edit: "Edit"
+    confirm: "Are you sure?"
+    search:
+      placeholder: "Pink elephants"
+      search_btn: "Search"
+    name:
+      mobile: "MENU"

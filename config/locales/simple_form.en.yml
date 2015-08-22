@@ -12,11 +12,11 @@ en:
       default_message: "Please review the problems below:"
     labels:
       card:
-        original_text: "Введите оригинальный текст"
-        translated_text: "Введите текст перевода"
+        original_text: "Enter original text"
+        translated_text: "Enter translation"
         edit:
-          original_text: "Откорректируйте оригинал"
-          translated_text: "Откорректируйте перевод"
+          original_text: "Edit original text"
+          translated_text: "Edit translation"
     placeholders:
       card:
         original_text: "Розовый слон"
@@ -24,8 +24,8 @@ en:
   helpers:
     submit:
       card:
-        create: "Создать карту"
-        update: "Редактировать карту"
+        create: "Create card"
+        update: "Edit card"
     # Examples
     # labels:
     #   defaults:
