@@ -1,0 +1,14 @@
+en:
+  cards:
+    original: "Original"
+    translated: "Translated"
+    review_date: "Review date"
+    index:
+      h1: "All cards"
+      total: "Total: %{count}"
+    new:
+      h1: "Add card"
+    edit:
+      h1: "Edit card: %{card_name}"
+    show:
+      h1: "Card: %{card_name}"

@@ -3,31 +3,31 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">МЕНЮ</span>
+        <span class="sr-only"><%= t 'menu.name.mobile' %></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Флешкер</a>
+      <a class="navbar-brand" href="/"><%= t 'name' %></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Розовые слоны">
+          <input type="text" class="form-control" placeholder="<%= t 'menu.search.placeholder' %>">
         </div>
-        <button type="submit" class="btn btn-default">Найти</button>
+        <button type="submit" class="btn btn-default"><%= t 'menu.search.search_btn' %></button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Все карточки', cards_path %></li>
-        <li><%= link_to 'Добавить карточку', new_card_path %></li>
+        <li><%= link_to t('menu.all_cards'), cards_path %></li>
+        <li><%= link_to t('menu.add_card'), new_card_path %></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Аккаунт <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t 'menu.account' %><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Войти</a></li>
+            <li><a href="#"><%= t 'menu.sign_in' %></a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Зарегистрироваться</a></li>
+            <li><a href="#"><%= t 'menu.sign_up' %></a></li>
           </ul>
         </li>
       </ul>
