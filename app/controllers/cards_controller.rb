@@ -6,7 +6,6 @@ class CardsController < ApplicationController
   end
 
   def show
-    @card.touch
   end
 
   def new
@@ -15,7 +14,6 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
-    @card.review_date = Time.now + 3.days
     if @card.save
       redirect_to @card
     else

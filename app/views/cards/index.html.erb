@@ -1,9 +1,9 @@
 <% content_for :title do %>
-<%= " | "+t('menu.all_cards') %>
+<%= " | " + t( 'menu.all_cards' ) %>
 <% end %>
-<h1><%= t "cards.#{params[:action]}.h1" %></h1>
-<p><%= t "cards.#{params[:action]}.total", count: @cards.count %></p>
+<h1><%= t( "cards.#{params[:action]}.h1" ) %></h1>
+<p><%= t( "cards.#{params[:action]}.total", count: @cards.count ) %></p>
 
 <%= render "cards", cards: @cards %>
 
-<p><%= link_to I18n.t('menu.add_card'), new_card_path %></p>
+<p><%= link_to t( 'menu.add_card' ), new_card_path %></p>
