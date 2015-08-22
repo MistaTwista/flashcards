@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.3'
 # Use simpleform gem
 gem 'simple_form'
+# Use Nokogiri for seeds.rb
+gem 'nokogiri'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
