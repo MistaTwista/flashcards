@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  before_validation :normalize_fields, :date_review
+  before_validation :normalize_fields, :three_days_to_review_date
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_equal_fields
 
@@ -15,7 +15,7 @@ class Card < ActiveRecord::Base
     field.squish.mb_chars.downcase.to_s
   end
 
-  def date_review
+  def three_days_to_review_date
     self.review_date = Time.now + 3.days
   end
 
