@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%= render "shared/html_header", title: I18n.t('name') %>
+<title><%= I18n.t('name')+yield(:title) %></title>
+<%= render "shared/html_header" %>
 </head>
 <body>
 
