@@ -2,6 +2,12 @@ class Card < ActiveRecord::Base
   before_validation :normalize_fields, :set_default_review_date
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_equal_fields
+  scope :reminder, -> { where("review_date < ?", Time.now+1.day).order("RANDOM()").first }
+
+  def move_review
+    set_default_review_date
+    self.save
+  end
 
   protected
 

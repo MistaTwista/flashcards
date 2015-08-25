@@ -1,0 +1,5 @@
+en:
+  messages:
+    home:
+      success: "Yes, you right!"
+      failure: "Nope, try again later!"

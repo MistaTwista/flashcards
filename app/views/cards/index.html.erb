@@ -3,6 +3,7 @@
 <% end %>
 <h1><%= t( "cards.#{params[:action]}.h1" ) %></h1>
 <p><%= t( "cards.#{params[:action]}.total", count: @cards.count ) %></p>
+<p>Вспомнить: <%= @to_remind %></p>
 
 <%= render "cards", cards: @cards %>
 

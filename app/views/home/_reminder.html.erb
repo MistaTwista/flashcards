@@ -1,0 +1,4 @@
+<%= render "flash", flash: flash %>
+<h2>Вспомни как переводится слово <%= @card.original_text %></h2>
+<%= render "form", card: @card %>
+<p>Осталось вспомнить <span class="badge"><%= @to_remind %></span></p>

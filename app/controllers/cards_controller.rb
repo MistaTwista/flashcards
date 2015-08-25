@@ -3,6 +3,7 @@ class CardsController < ApplicationController
 
   def index
     @cards = Card.all
+    @to_remind = Card.where("review_date < ?", Time.now+1.day).count
   end
 
   def show
