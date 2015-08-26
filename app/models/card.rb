@@ -7,11 +7,11 @@ class Card < ActiveRecord::Base
 
   def move_review
     set_default_review_date
-    self.save
+    save
   end
 
   def right_translation?(translation)
-    self.translated_text == translation
+    translated_text == translation
   end
 
   protected
