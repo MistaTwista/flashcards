@@ -8,7 +8,7 @@ class Card < ActiveRecord::Base
     set_default_review_date
     save
     Rails.cache.fetch("cards_to_review") do
-     Card.reminder.count
+      Card.reminder.count
     end
   end
 
