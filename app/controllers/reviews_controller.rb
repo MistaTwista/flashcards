@@ -7,10 +7,10 @@ class ReviewsController < ApplicationController
 
   def trainer
     if right_translation?
-      flash[:success] = t( "messages.home.success" )
+      flash[:success] = t("messages.home.success")
       redirect_to review_path
     else
-      flash[:danger] = t( "messages.home.failure" )
+      flash[:danger] = t("messages.home.failure")
       redirect_to review_path
     end
   end
