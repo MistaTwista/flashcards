@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   resources :cards
-  get 'review' => 'reviews#new'
+  get 'reviews' => 'reviews#new'
   post 'trainer' => 'reviews#trainer'
   # get 'cards' => 'cards#index'
   # get 'cards/new' => 'cards#new'

@@ -2,16 +2,16 @@ class ReviewsController < ApplicationController
   before_action :find_card, only: [:trainer]
 
   def new
-    @card = Card.reminder
+    @card = Card.reviews.first
   end
 
   def trainer
     if right_translation?
       flash[:success] = t("messages.home.success")
-      redirect_to review_path
+      redirect_to reviews_path
     else
       flash[:danger] = t("messages.home.failure")
-      redirect_to review_path
+      redirect_to reviews_path
     end
   end
 
