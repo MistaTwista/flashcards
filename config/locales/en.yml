@@ -22,6 +22,7 @@
 en:
   name: "Flashcards"
   menu:
+    reviews: "Reviews"
     all_cards: "All cards"
     add_card: "Add card"
     account: "Account"

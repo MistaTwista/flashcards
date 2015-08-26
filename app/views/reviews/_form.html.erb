@@ -1,0 +1,7 @@
+<%= simple_form_for @card,
+    :url => url_for(:action => 'trainer', :controller => 'reviews'),
+    :method => 'post' do |f| %>
+  <%= f.input :translated_text, :input_html => { :value => '' }, :autofocus=>true %>
+  <%= f.input :id, as: :hidden %>
+  <%= f.button :submit, 'Check' %>
+<% end %>

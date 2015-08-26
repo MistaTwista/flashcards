@@ -3,10 +3,15 @@ class Card < ActiveRecord::Base
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_equal_fields
   scope :reminder, -> { where("review_date < ?", Time.now+1.day).order("RANDOM()").first }
+  scope :reminder_count, -> { where("review_date < ?", Time.now + 1.day).count }
 
   def move_review
     set_default_review_date
     self.save
+  end
+
+  def right_translation?(translation)
+    self.translated_text == translation
   end
 
   protected
