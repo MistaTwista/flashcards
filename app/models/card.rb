@@ -7,13 +7,10 @@ class Card < ActiveRecord::Base
   def move_review
     set_default_review_date
     save
-    Rails.cache.fetch("cards_to_review") do
-      Card.reminder.count
-    end
   end
 
   def right_translation?(translation)
-    translated_text == translation
+    translated_text == clear(translation)
   end
 
   def self.reset_all_review_dates
@@ -37,6 +34,9 @@ class Card < ActiveRecord::Base
 
   def set_default_review_date
     self.review_date = Time.now + 3.days
+    Rails.cache.fetch("cards_to_review") do
+      Card.reminder.count
+    end
   end
 
   def normalize_fields

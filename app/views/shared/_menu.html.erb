@@ -21,8 +21,8 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= link_to reviews_path do %>
-            <%= t('menu.reviews') %> <%= render "reviews/count" %>
+          <%= link_to new_review_path do %>
+            <%= t('menu.reviews') %> <%= cards_to_review %>
           <% end %>
         </li>
         <li class="dropdown">

@@ -1,26 +1,21 @@
 class ReviewsController < ApplicationController
-  before_action :find_card, only: [:trainer]
+  before_action :find_card, only: [:create]
 
   def new
     @card = Card.reviews.first
   end
 
-  def trainer
-    if right_translation?
-      flash[:success] = t("messages.home.success")
-      redirect_to reviews_path
-    else
-      flash[:danger] = t("messages.home.failure")
-      redirect_to reviews_path
-    end
+  def create
+    check_translation
+    redirect_to new_review_path
   end
 
-  def right_translation?
+  def check_translation
     if @card.right_translation?(review_params[:translated_text])
       @card.move_review
-      return true
+      flash[:success] = t("messages.home.success")
     else
-      return false
+      flash[:danger] = t("messages.home.failure")
     end
   end
 
