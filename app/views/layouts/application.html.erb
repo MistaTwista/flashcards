@@ -5,11 +5,14 @@
   <%= render "shared/html_header" %>
 </head>
 <body>
-
-<%= render "shared/menu" %>
-<div class="container">
+  <%= render "shared/menu" %>
+  <div class="container">
     <%= yield %>
-</div>
-
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">&copy;&nbsp;<%= t( "name" ) + " " + Time.now.year.to_s %></p>
+    </div>
+  </footer>
 </body>
 </html>

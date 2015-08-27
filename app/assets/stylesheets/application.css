@@ -15,3 +15,7 @@
 //= require bootstrap-theme
 //= require_tree .
 //= require_self
+
+footer {
+  margin-top: 10em;
+}
