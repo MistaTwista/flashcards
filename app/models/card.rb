@@ -1,22 +1,27 @@
 class Card < ActiveRecord::Base
-  before_validation :normalize_fields, :set_default_review_date
+  before_validation :normalize_fields, :set_new_review_date
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_equal_fields
-  scope :reviews, -> { where("review_date < ?", Time.now).order("RANDOM()") }
+  scope :for_review, -> { where("review_date < ?", Time.now).order("RANDOM()") }
 
-  def move_review
-    set_default_review_date
+  def move_review_date
+    set_new_review_date
     save
+    Rails.cache.write('number_of_cards_for_review', Card.for_review.count)
   end
 
-  def right_translation?(translation)
-    translated_text == clear(translation)
+  def check_translation?(translation)
+    if translated_text == clear(translation)
+      move_review_date
+      return true
+    else
+      return false
+    end
   end
 
-  def self.reset_all_review_dates
-    Card.find_each do |card|
-      card.review_date = Time.now - 3.days
-      card.save
+  def self.cards_for_review_counter
+    Rails.cache.fetch('number_of_cards_for_review') do
+     Card.for_review.count
     end
   end
 
@@ -32,11 +37,8 @@ class Card < ActiveRecord::Base
     field.squish.mb_chars.downcase.to_s
   end
 
-  def set_default_review_date
+  def set_new_review_date
     self.review_date = Time.now + 3.days
-    Rails.cache.fetch("cards_to_review") do
-      Card.reminder.count
-    end
   end
 
   def normalize_fields

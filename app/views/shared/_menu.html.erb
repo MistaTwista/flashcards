@@ -22,7 +22,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           <%= link_to new_review_path do %>
-            <%= t('menu.reviews') %> <%= cards_to_review %>
+            <%= t('menu.reviews') %> <%= number_of_cards_for_review %>
           <% end %>
         </li>
         <li class="dropdown">

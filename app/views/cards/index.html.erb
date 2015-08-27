@@ -3,7 +3,7 @@
 <% end %>
 <h1><%= t( "cards.#{params[:action]}.h1" ) %></h1>
 <p><%= t( "cards.#{params[:action]}.total", count: @cards.count ) %></p>
-<%= cards_to_review show_text: true %>
+<%= number_of_cards_for_review show_text: true %>
 
 <%= render "cards", cards: @cards %>
 
