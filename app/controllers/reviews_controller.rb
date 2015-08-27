@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    if @card.check_translation?(review_params[:translated_text])
+    if @card.check_translation(review_params[:translated_text])
       flash[:success] = t("messages.home.success")
     else
       flash[:danger] = t("messages.home.failure")
