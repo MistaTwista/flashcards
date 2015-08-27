@@ -7,7 +7,7 @@ class Card < ActiveRecord::Base
   def move_review_date
     set_new_review_date
     save
-    Rails.cache.write('number_of_cards_for_review', Card.for_review.count)
+    Rails.cache.write("number_of_cards_for_review", Card.for_review.count)
   end
 
   def check_translation?(translation)
@@ -20,8 +20,8 @@ class Card < ActiveRecord::Base
   end
 
   def self.cards_for_review_counter
-    Rails.cache.fetch('number_of_cards_for_review') do
-     Card.for_review.count
+    Rails.cache.fetch("number_of_cards_for_review") do
+      Card.for_review.count
     end
   end
 
