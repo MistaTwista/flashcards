@@ -24,8 +24,4 @@ ActiveRecord::Schema.define(version: 20150819132046) do
     t.datetime "updated_at",      null: false
   end
 
-  create_table "stable", id: false, force: :cascade do |t|
-    t.boolean "yo"
-  end
-
 end
