@@ -2,7 +2,7 @@ class Card < ActiveRecord::Base
   before_validation :set_default_review_date
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_equal_fields
-  scope :for_review, -> { where("review_date < ?", Date.today).order("RANDOM()") }
+  scope :for_review, -> { where("review_date < ?", Date.today) }
 
   def move_review_date
     self.review_date = Date.today + 3.days
@@ -18,6 +18,11 @@ class Card < ActiveRecord::Base
     end
   end
 
+  def self.random_card
+    offset = rand(for_review.count)
+    rand_record = Card.offset(offset).first
+  end
+
   protected
 
   def not_equal_fields
@@ -27,7 +32,7 @@ class Card < ActiveRecord::Base
   end
 
   def clear(field)
-    field.squish.mb_chars.downcase.to_s if !field.nil?
+    field.squish.mb_chars.downcase.to_s unless field.nil?
   end
 
   def set_default_review_date

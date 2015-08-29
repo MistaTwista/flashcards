@@ -1,18 +1,8 @@
 require 'rails_helper'
 
 describe Card do
-  it "card without translation" do
-    card = build(:card_without_translation)
-    expect(card).to be_invalid
-  end
-
-  it "card without original text" do
-    card = build(:card_without_orig)
-    expect(card).to be_invalid
-  end
-
   it "card with original = translation" do
-    card = build(:card_with_equals)
+    card = Card.new(original_text: " оЛень  ", translated_text: "     ОлЕНЬ ")
     expect(card).to be_invalid
   end
 
