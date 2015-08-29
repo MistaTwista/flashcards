@@ -17,5 +17,4 @@ FactoryGirl.define do
     original_text " Deer"
     translated_text "    dEeR  "
   end
-
 end

@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  before_validation :normalize_original, :normalize_translated, :set_default_review_date
+  before_validation :set_default_review_date
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_equal_fields
   scope :for_review, -> { where("review_date < ?", Date.today).order("RANDOM()") }
@@ -32,13 +32,5 @@ class Card < ActiveRecord::Base
 
   def set_default_review_date
     self.review_date = Date.today + 3.days
-  end
-
-  def normalize_original
-    self.original_text = self.original_text.squish() if !self.original_text.nil?
-  end
-
-  def normalize_translated
-    self.translated_text = self.translated_text.squish() if !self.translated_text.nil?
   end
 end
