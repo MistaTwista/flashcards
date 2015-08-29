@@ -13,7 +13,7 @@ describe Card do
   end
 
   it "#review_date" do
-    expect(card.review_date == Date.today + 3.days).to be true
+    expect(card.review_date).to eq(Date.today + 3.days)
   end
 
   it "#review_date after translation check" do
