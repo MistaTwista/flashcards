@@ -5,17 +5,17 @@ describe Card do
   context "valid false" do
 
     it "card without translation" do
-      card = Card.new(original_text: "   Лицо ")
+      card = build(:card_without_translation)
       expect(card).to be_invalid
     end
 
     it "card without original text" do
-      card = Card.new(translated_text: " faCe ")
+      card = build(:card_without_orig)
       expect(card).to be_invalid
     end
 
     it "card with original = translation" do
-      card = Card.new(original_text: "    Face ", translated_text: " faCe ")
+      card = build(:card_with_equals)
       expect(card).to be_invalid
     end
 
