@@ -20,7 +20,7 @@ class Card < ActiveRecord::Base
 
   def self.random_card
     offset = rand(for_review.count)
-    rand_record = Card.offset(offset).first
+    Card.offset(offset).first
   end
 
   protected
