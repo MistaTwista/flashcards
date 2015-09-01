@@ -1,0 +1,6 @@
+language: ruby
+before_script:
+  - "bundle exec rake prepare_test_env"
+script: "bundle exec rspec"
+rvm:
+  - 2.1.1
