@@ -1,6 +1,9 @@
-postgresql: &postgresql
+default: &default
   adapter: postgresql
   username: postgres
   password:
-  database: flashcards_<%= Rails.env %>
+  database: flashcards_test
   min_messages: ERROR
+
+test:
+  <<: *default
