@@ -1,10 +1,13 @@
 language: ruby
 rvm:
   - 2.1.1
-sudo: false
-script:
+env:
+  - DB=postgresql
+before_script:
   - cp config/database.travis.yml config/database.yml
+  - psql -c 'create database flashcards_test' -U postgres
+script:
   - export RAILS_ENV=test
-  - bundle exec rake db:create db:migrate
+  - bundle exec rake db:create db:migrate --trace
   - bundle exec rake db:test:prepare
-script: "bundle exec rspec"
+  - bundle exec rake

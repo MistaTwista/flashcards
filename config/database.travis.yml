@@ -1,4 +1,6 @@
-test:
-  adapter: sqlite3
-  database: ":memory:"
-  timeout: 500
+postgresql: &postgresql
+  adapter: postgresql
+  username: postgres
+  password:
+  database: flashcards_<%= Rails.env %>
+  min_messages: ERROR
