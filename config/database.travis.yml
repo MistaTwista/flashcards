@@ -1,9 +1,4 @@
-default: &default
-  adapter: postgresql
-  username: postgres
-  password:
-  database: flashcards_test
-  min_messages: ERROR
-
 test:
-  <<: *default
+  adapter: postgresql
+  database: travis_ci_test
+  username: postgres
