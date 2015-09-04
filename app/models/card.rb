@@ -1,6 +1,7 @@
 class Card < ActiveRecord::Base
+  belongs_to :user
   before_validation :set_default_review_date
-  validates :original_text, :translated_text, :review_date, presence: true
+  validates :original_text, :translated_text, :review_date, :user_id, presence: true
   validate :not_equal_fields
   scope :for_review, -> { where("review_date < ?", Date.today) }
 

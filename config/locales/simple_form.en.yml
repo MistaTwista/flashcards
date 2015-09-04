@@ -17,15 +17,27 @@ en:
         edit:
           original_text: "Edit original text"
           translated_text: "Edit translation"
+      user:
+        email: "Enter email"
+        password: "Enter password"
+        edit:
+          email: "Edit email"
+          password: "Edit password"
     placeholders:
       card:
         original_text: "Розовый слон"
         translated_text: "Pink elephant"
+      user:
+        email: "name@example.com"
+        password: "JAj31!!"
   helpers:
     submit:
       card:
         create: "Create card"
         update: "Edit card"
+      user:
+        create: "Create user"
+        update: "Edit user"
     # Examples
     # labels:
     #   defaults:

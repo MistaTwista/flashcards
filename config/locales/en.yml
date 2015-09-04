@@ -24,6 +24,7 @@ en:
   menu:
     reviews: "Reviews"
     all_cards: "All cards"
+    all_users: "All users"
     add_card: "Add card"
     account: "Account"
     sign_in: "Sign in"
