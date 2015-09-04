@@ -1,7 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe User do
-
   it "create user" do
     register_with("josh@wink.com", "DASFI@")
     expect(page).to have_content "User: josh@wink.com"

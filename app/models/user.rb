@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, on: :create
   validates :email, email: true
   has_many :cards
-  scope :for_review, -> { where("review_date < ?", Date.today) }
 
   def self.email_list
     email_list = {}
