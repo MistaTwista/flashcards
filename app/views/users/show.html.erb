@@ -1,0 +1,4 @@
+<h1><%= t( "users.#{params[:action]}.h1", user_name: @user.email ) %></h1>
+<p><%= t "users.email" %>: <%= @user.email %></p>
+<p><%= t "users.password" %>: <%= @user.password %></p>
+<p><%= link_to t( 'menu.edit_user' ), edit_user_path, class: "btn btn-default" %></p>

@@ -1,5 +1,6 @@
 <%= simple_form_for card, html: { class: 'card_form' } do |f| %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
+  <%= f.input :user_id, collection: User.email_list %>
   <%= f.button :submit %>
 <% end %>

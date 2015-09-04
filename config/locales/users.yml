@@ -1,0 +1,14 @@
+en:
+  users:
+    email: "Email"
+    password: "Password"
+    index:
+      h1: "All users"
+    new:
+      h1: "Add user"
+    edit:
+      h1: "Edit user: %{user_name}"
+    show:
+      h1: "User: %{user_name}"
+    create:
+      h1: "Add user"

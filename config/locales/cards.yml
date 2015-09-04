@@ -2,6 +2,7 @@ en:
   cards:
     original: "Original"
     translated: "Translated"
+    user: "User"
     review_date: "Review date"
     index:
       h1: "All cards"
@@ -11,4 +12,6 @@ en:
     edit:
       h1: "Edit card: %{card_name}"
     show:
+      h1: "Card: %{card_name}"
+    update:
       h1: "Card: %{card_name}"

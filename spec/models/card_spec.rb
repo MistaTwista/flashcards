@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 describe Card do
-  it "card with original = translation" do
-    card = build(:card, original_text: " оЛень  ", translated_text: "     ОлЕНЬ ")
+  let!(:card) { create(:card) }
+
+  it "false with original == translation" do
+    user = build(:user, email: "deer@deer.ru")
+    card = build(:card, original_text: " оЛень  ", translated_text: "     ОлЕНЬ ", user: user)
     expect(card).to be_invalid
   end
-
-  let!(:card) { create(:card) }
 
   it "#check_translation" do
     expect(card.check_translation("ifdnq02")).to be false
