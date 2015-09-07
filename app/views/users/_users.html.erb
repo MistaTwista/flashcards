@@ -8,7 +8,7 @@
         <%= link_to(user, method: :delete, data: { confirm: t('menu.confirm') }, title: t('menu.delete')) do %>
           <span class="glyphicon glyphicon-remove white close" aria-hidden="true"></span>
         <% end %>
-        <%= link_to(edit_card_path(user), title: t('menu.edit')) do %>
+        <%= link_to(edit_user_path(user), title: t('menu.edit')) do %>
           <span class="glyphicon glyphicon-edit white close" aria-hidden="true"></span>
         <% end %>
       </div>

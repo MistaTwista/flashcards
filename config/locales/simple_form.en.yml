@@ -36,8 +36,8 @@ en:
         create: "Create card"
         update: "Edit card"
       user:
-        create: "Create user"
-        update: "Edit user"
+        create: "Register"
+        update: "Save"
     # Examples
     # labels:
     #   defaults:

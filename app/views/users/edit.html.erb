@@ -1,5 +1,6 @@
-<h1><%= t("users.#{params[:action]}.h1", user_name: @user.email) %></h1>
+<h1>Editing User</h1>
 
-<%= render "form", user: @user %>
+<%= render 'form' %>
 
-<p><%= link_to t('menu.back_to_user'), user_path %></p>
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

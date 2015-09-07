@@ -1,8 +1,5 @@
-<% content_for :title do %>
-  <%= " | " + t( 'menu.all_users' ) %>
-<% end %>
-<h1><%= t( "users.#{params[:action]}.h1" ) %></h1>
+<h1>Listing Users</h1>
 
 <%= render "users", users: @users %>
 
-<p><%= link_to t( 'menu.add_user' ), new_user_path %></p>
+<%= link_to 'New User', new_user_path %>
