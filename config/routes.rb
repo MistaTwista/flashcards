@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # resources :users
   resources :user_sessions
   resources :registrations, only: [:new, :create]
-  resources :profiles, only: [:index, :show, :edit, :update, :destroy]
+  resources :profiles, only: [:edit, :update]
   get 'login' => 'user_sessions#new', as: :login
   post 'logout' => 'user_sessions#destroy', as: :logout
 

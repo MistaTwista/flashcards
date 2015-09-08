@@ -35,6 +35,10 @@ en:
         create: "Create card"
         update: "Edit card"
       user:
+        new: "Register"
+        create: "Register"
+        update: "Save"
+      registrations:
         create: "Register"
         update: "Save"
     # Examples

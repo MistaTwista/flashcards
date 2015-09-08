@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
 
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, presence: true, email: true
   has_many :cards
 
   def has_linked_github?

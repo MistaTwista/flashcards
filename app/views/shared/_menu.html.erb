@@ -26,11 +26,6 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to profiles_path do %>
-              <%= t('menu.all_users') %>
-            <% end %>
-          </li>
-          <li>
             <%= link_to new_review_path do %>
               <%= t('menu.reviews') %> <%= number_of_cards_for_review %>
             <% end %>
@@ -46,11 +41,16 @@
                 <li><%= link_to "Logout", :logout, method: :post %></li>
               <% else %>
                 <li role="separator" class="divider"></li>
-                <li><%= link_to t('menu.sign_up'), new_profile_path %></li>
+                <li><%= link_to t('menu.sign_up'), new_registration_path %></li>
                 <li><%= link_to t('menu.sign_in'), :login %></li>
               <% end %>
             </ul>
           </li>
+        </ul>
+      <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to t('menu.sign_up'), new_registration_path %></li>
+          <li><%= link_to t('menu.sign_in'), :login %></li>
         </ul>
       <% end %>
     </div><!-- /.navbar-collapse -->
