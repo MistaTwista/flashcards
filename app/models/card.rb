@@ -4,7 +4,6 @@ class Card < ActiveRecord::Base
   validates :original_text, :translated_text, :review_date, :user_id, presence: true
   validate :not_equal_fields
   scope :for_review, -> { where("review_date < ?", Date.today) }
-  scope :current_user, -> (user) { where("user_id = ?", user) }
 
   def move_review_date
     self.review_date = Date.today + 3.days
@@ -20,13 +19,9 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def self.for_user(user)
-    for_review.current_user(user)
-  end
-
-  def self.random_card(user)
-    offset = rand(for_review.current_user(user).count)
-    for_review.current_user(user).offset(offset).first
+  def self.random
+    offset = rand(for_review.count)
+    for_review.offset(offset).first
   end
 
   protected

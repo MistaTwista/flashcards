@@ -1,19 +1,19 @@
 <div class="row">
-<% users.each do |user| %>
+<% @profiles.each do |profile| %>
   <div class="col-md-3">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <span class="panel-title"><%= link_to user.email, user %></span>
-        <span class="pull-right">#<%= user.id %></span>
-        <%= link_to(user, method: :delete, data: { confirm: t('menu.confirm') }, title: t('menu.delete')) do %>
+        <span class="panel-title"><%= link_to profile.email, profile %></span>
+        <span class="pull-right">#<%= profile.id %></span>
+        <%= link_to(profile, method: :delete, data: { confirm: t('menu.confirm') }, title: t('menu.delete')) do %>
           <span class="glyphicon glyphicon-remove white close" aria-hidden="true"></span>
         <% end %>
-        <%= link_to(edit_user_path(user), title: t('menu.edit')) do %>
+        <%= link_to(edit_profile_path(profile), title: t('menu.edit')) do %>
           <span class="glyphicon glyphicon-edit white close" aria-hidden="true"></span>
         <% end %>
       </div>
       <div class="panel-body">
-        <%= user.password %>
+        <%= profile.password %>
       </div>
     </div>
   </div>

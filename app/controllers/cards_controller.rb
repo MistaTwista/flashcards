@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   before_action :find_card, only: [:show, :update, :edit]
 
   def index
-    @cards = @current_user.cards
+    @cards = current_user.cards
   end
 
   def show
@@ -13,8 +13,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(card_params)
-    @card.user = @current_user
+    @card = current_user.cards.new(card_params)
     if @card.save
       redirect_to @card
     else

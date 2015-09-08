@@ -16,6 +16,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(:users, info: 'Logged out!')
+    redirect_to(:profiles, info: 'Logged out!')
   end
 end

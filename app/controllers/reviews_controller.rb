@@ -2,10 +2,7 @@ class ReviewsController < ApplicationController
   before_action :find_card, only: [:create]
 
   def new
-    @card = Card.random_card(@current_user)
-    if @card == nil
-      render 'no_reviews_left'
-    end
+    @card = current_user.cards.random
   end
 
   def create

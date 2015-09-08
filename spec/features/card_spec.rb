@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe Card do
-  # let!(:user) { create(:user, email: "neo@mail.ru") }
   let!(:card) { create(:card).update_attribute(:review_date, Date.today - 5.days) }
 
   it "right review" do

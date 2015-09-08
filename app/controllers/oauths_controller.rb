@@ -1,6 +1,6 @@
 class OauthsController < ApplicationController
   skip_before_filter :require_login
-  before_filter :require_login, only: :destroy
+  before_action :require_login, only: :destroy
 
   def oauth
     login_at(auth_params[:provider])
