@@ -1,17 +1,5 @@
 <p>
   <strong>Email:</strong>
-  <%= @user.email %>
+  <%= current_user.email %> | <%= link_to 'Change password', edit_profile_path %>
 </p>
-
-<p>
-  <strong>Crypted password:</strong>
-  <%= @user.crypted_password %>
-</p>
-
-<p>
-  <strong>Salt:</strong>
-  <%= @user.salt %>
-</p>
-
-<%= link_to 'Edit', edit_profile_path(@user) %> |
-<%= link_to 'Back', profiles_path %>
+<%= render "shared/session_links" %>

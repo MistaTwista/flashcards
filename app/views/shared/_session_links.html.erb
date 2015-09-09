@@ -5,10 +5,10 @@
     <% if current_user.has_linked_github? %>
       <%= link_to 'Unlink your Github account', delete_oauth_path('github'), method: :delete %>
     <% else %>
-      <%= link_to 'Link your GitHub account', auth_at_provider_path(:provider => :github) %>
+      <%= link_to 'Link your GitHub account', auth_at_provider_path(provider: :github) %>
     <% end %> |
 
-    <%= link_to "Logout", :logout, method: :post %>
+    <%= link_to "Logout", :logout, method: :delete %>
   <% else %>
     <%= link_to 'Login using Github', auth_at_provider_path(provider: :github) %>
   <% end %>
