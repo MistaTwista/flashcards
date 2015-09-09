@@ -3,8 +3,6 @@ class SorceryCore < ActiveRecord::Migration
     change_table :users do |t|
       t.rename :password, :crypted_password
       t.string :salt
-
-      t.timestamps
     end
 
     add_index :users, :email, unique: true

@@ -1,6 +1,6 @@
 RSpec.configure do |config|
   require 'capybara/rspec'
-  Dir["./spec/support/**/*.rb"].each {|f| require f}
+  Dir["./spec/support/**/*.rb"].each { |f| require f }
   config.include UserHelper, type: :feature
 
   config.expect_with :rspec do |expectations|
