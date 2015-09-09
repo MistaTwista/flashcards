@@ -37,8 +37,12 @@ ActiveRecord::Schema.define(version: 20150907202310) do
 
   add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
 
+  create_table "stable", id: false, force: :cascade do |t|
+    t.boolean "yo"
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",            null: false
+    t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
