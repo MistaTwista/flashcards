@@ -5,9 +5,6 @@ en:
     required:
       text: 'required'
       mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
     labels:
@@ -20,9 +17,11 @@ en:
       user:
         email: "Enter email"
         password: "Enter password"
+        password_confirmation: "Confirm password"
         edit:
           email: "Edit email"
           password: "Edit password"
+          password_confirmation: "Confirm password"
     placeholders:
       card:
         original_text: "Розовый слон"
@@ -36,8 +35,12 @@ en:
         create: "Create card"
         update: "Edit card"
       user:
-        create: "Create user"
-        update: "Edit user"
+        new: "Register"
+        create: "Register"
+        update: "Save"
+      registrations:
+        create: "Register"
+        update: "Save"
     # Examples
     # labels:
     #   defaults:

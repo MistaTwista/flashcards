@@ -1,23 +1,20 @@
 class User < ActiveRecord::Base
-  include ActiveModel::Validations
-  before_save :email_downcase
-  validates :email, :password, presence: true
-  validates :email, uniqueness: true, on: :create
-  validates :email, email: true
-  has_many :cards
-
-  def self.email_list
-    email_list = {}
-    User.all.each do |u|
-      # email_list << { u.email => u.id }
-      email_list[u.email] = u.id
-    end
-    email_list
+  authenticates_with_sorcery! do |config|
+    config.authentications_class = Authentication
   end
 
-  private
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
 
-  def email_downcase
-    self.email = email.downcase
+  validates :password, length: { minimum: 3 }
+  validates :password, confirmation: true
+  validates :password_confirmation, presence: true
+
+  validates :email, uniqueness: true, presence: true, on: :create, email: true
+  validates :email, email: true, on: :update
+  has_many :cards
+
+  def has_linked_github?
+    authentications.where(provider: 'github').present?
   end
 end

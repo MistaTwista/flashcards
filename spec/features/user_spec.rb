@@ -2,22 +2,26 @@ require "rails_helper"
 
 describe User do
   it "create user" do
-    register_with("josh@wink.com", "DASFI@")
-    expect(page).to have_content "User: josh@wink.com"
+    register
+    expect(page).to have_content "josh@wink.com"
   end
 
   it "existing user" do
-    register_with("josh@wink.com", "DASFI@")
-    register_with("josh@wink.com", "DASFI@")
+    register
+    register
     expect(page).to have_content "has already been taken"
   end
 
-  def register_with(email, password)
-    visit new_user_path
-    within(".simple_form") do
-      fill_in "user_email", with: email
-      fill_in "user_password", with: password
-    end
-    click_button "Create user"
+  it "sees only self cards" do
+    login_with("example@example.com", "123123")
+    create(:card)
+    logout
+    register_with("man@ohman.com", "123123", "123123")
+    visit cards_path
+    expect(page).to have_no_content "deer"
+  end
+
+  def register
+    register_with("josh@wink.com", "DASFI@", "DASFI@")
   end
 end
