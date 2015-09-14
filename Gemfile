@@ -11,6 +11,10 @@ gem 'nokogiri'
 gem 'pg'
 # Use Sorcery
 gem 'sorcery'
+# Use Paperclip
+gem "paperclip"
+# AWS
+gem 'aws-sdk', '< 2.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

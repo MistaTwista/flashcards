@@ -1,6 +1,7 @@
 <h1><%= t( "cards.#{params[:action]}.h1", card_name: @card.original_text ) %></h1>
 <p><%= t "cards.original" %>: <%= @card.original_text %></p>
 <p><%= t "cards.translated" %>: <%= @card.translated_text %></p>
+<p><%= image_tag @card.picture.url(:medium) %></p>
 <% unless @card.user.nil? %>
   <p><%= t "cards.user" %>: <%= @card.user.email %></p>
 <% end %>
