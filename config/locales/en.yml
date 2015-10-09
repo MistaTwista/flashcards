@@ -24,8 +24,10 @@ en:
   menu:
     reviews: "Reviews"
     all_cards: "All cards"
+    all_decks: "All decks"
     all_users: "All users"
     add_card: "Add card"
+    add_deck: "Add deck"
     account: "Account"
     sign_in: "Sign in"
     sign_up: "Sign up"

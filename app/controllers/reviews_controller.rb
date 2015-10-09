@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :find_card, only: [:create]
 
   def new
-    @card = current_user.cards.random
+    @card = current_user.for_review
   end
 
   def create

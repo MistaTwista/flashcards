@@ -3,10 +3,13 @@ module ReviewCountHelper
     if show_text
       content_tag :p do
         concat(text)
-        concat(content_tag(:span, current_user.cards.for_review.count, class: "badge"))
+        concat(content_tag(:span, current_user.for_review_counter.count, class: "badge"))
       end
     else
-      content_tag :span, current_user.cards.for_review.count, class: "badge"
+      content_tag :span, current_user.for_review_counter.count, class: "badge"
     end
+  end
+  def current_deck_name
+    current_user.deck.name
   end
 end

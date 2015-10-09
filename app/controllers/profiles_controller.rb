@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_to edit_profile_path, flash: { warning: 'User was successfully updated.' }
+      redirect_to profile_path, flash: { warning: 'User was successfully updated.' }
     else
       render :edit
     end
@@ -24,6 +24,6 @@ class ProfilesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:password, :password_confirmation)
+    params.require(:user).permit(:password, :password_confirmation, :deck_id)
   end
 end

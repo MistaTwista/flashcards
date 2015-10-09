@@ -1,9 +1,9 @@
 class Card < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :deck
   before_validation :set_default_review_date
   has_attached_file :picture, styles: { medium: "360x360>", thumb: "50x50>" }, default_url: "/images/placeholder.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
-  validates :original_text, :translated_text, :review_date, :user_id, presence: true
+  validates :original_text, :translated_text, :review_date, :deck_id, presence: true
   validate :not_equal_fields
   scope :for_review, -> { where("review_date < ?", Date.today) }
 
