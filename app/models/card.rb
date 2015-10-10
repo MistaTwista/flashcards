@@ -1,5 +1,6 @@
 class Card < ActiveRecord::Base
   belongs_to :deck
+  belongs_to :user
   before_validation :set_default_review_date
   has_attached_file :picture, styles: { medium: "360x360>", thumb: "50x50>" }, default_url: "/images/placeholder.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/

@@ -24,6 +24,6 @@ class ProfilesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:password, :password_confirmation, :deck_id)
+    params.require(:user).permit(:password, :password_confirmation, :current_deck_id)
   end
 end

@@ -1,16 +1,15 @@
 class AddCurrentDeckRefToUser < ActiveRecord::Migration
   def change
-    add_reference :users, :deck, index: true, foreign_key: true
-    # add_column :users, :current_deck_id, :integer
-    # add_index :users, :current_deck_id
+    add_column :users, :current_deck_id, :integer
+    add_index :users, :current_deck_id
 
     reversible do |dir|
       dir.up do
         say_with_time "Changing tables to use Default deck..." do
           User.all.each do |u|
-            u.update_columns(deck_id: Deck.create(name: "Default deck", user: u));
+            u.update_columns(current_deck_id: Deck.create(name: "Default deck", user: u));
             u.cards.each do |c|
-              c.deck = u.deck
+              c.deck = u.current_deck_id
               c.save!
             end
           end
@@ -20,7 +19,6 @@ class AddCurrentDeckRefToUser < ActiveRecord::Migration
       dir.down do
         say_with_time "Removing Decks implementation" do
           User.all.each do |u|
-            user_current_deck = u.deck
             u.decks.each do |deck|
               deck.cards.each do |c|
                 c.user = u
@@ -28,8 +26,7 @@ class AddCurrentDeckRefToUser < ActiveRecord::Migration
                 c.save!
               end
             end
-            u.update_columns(deck_id: nil);
-            Deck.destroy(user_current_deck)
+            Deck.destroy(u.current_deck_id)
           end
         end
       end

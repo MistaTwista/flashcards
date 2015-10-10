@@ -1,7 +1,7 @@
 <%= simple_form_for card, html: { class: 'card_form' } do |f| %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
-  <%= f.input :deck_id, collection: decks, as: :radio_buttons %>
+  <%= f.input :deck_id, collection: current_user.decks, as: :radio_buttons %>
   <%= f.input :picture, as: :file %>
   <%= f.button :submit %>
 <% end %>

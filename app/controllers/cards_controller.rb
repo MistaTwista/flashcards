@@ -1,20 +1,32 @@
 class CardsController < ApplicationController
   before_action :find_card, only: [:show, :update, :edit]
-  before_action :user_decks, only: [:index, :update, :edit]
+  before_action :set_user_decks, only: [:index, :update, :edit]
+
+  def redirect_to_new_deck(message: "At lease one deck needed")
+    redirect_to(new_deck_path, flash: { info: message })
+  end
 
   def index
-    @cards = current_user.deck.cards
+    if current_user.decks.any?
+      @cards = current_user.current_deck_or_any.cards
+    else
+      redirect_to_new_deck
+    end
   end
 
   def show
   end
 
   def new
-    @card = Card.new
+    if current_user.decks.any?
+      @card = Card.new
+    else
+      redirect_to_new_deck
+    end
   end
 
   def create
-    @card = current_user.deck.cards.new(card_params)
+    @card = current_user.current_deck_or_any.cards.new(card_params)
     if @card.save
       redirect_to @card
     else
@@ -40,7 +52,7 @@ class CardsController < ApplicationController
 
   private
 
-  def user_decks
+  def set_user_decks
     @decks = current_user.decks
   end
 

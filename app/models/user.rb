@@ -3,32 +3,38 @@ class User < ActiveRecord::Base
     config.authentications_class = Authentication
   end
 
-  belongs_to :deck
+  after_create :add_current_deck
+  belongs_to :current_deck, class_name: "Deck"
   has_many :decks
   has_many :authentications, dependent: :destroy
   has_many :cards
 
   accepts_nested_attributes_for :authentications
-
-  validates :password, length: { minimum: 3 }, on: [:create, :update], if: :password_present?
-  validates :password, confirmation: true, on: [:create, :update], if: :password_present?
-  validates :password_confirmation, presence: true, on: [:create, :update], if: :password_present?
+  with_options if: :password_present? do |u|
+    u.validates :password, length: { minimum: 3 }, on: [:create, :update]
+    u.validates :password, confirmation: true, on: [:create, :update]
+    u.validates :password_confirmation, presence: true, on: [:create, :update]
+  end
   validates :email, uniqueness: true, presence: true, on: :create, email: true
   validates :email, email: true, on: :update
 
-  def current_deck
-    if self.decks.any?
+  def add_current_deck
+    decks.create(name: "Default deck")
+  end
+
+  def current_deck_or_any
+    if decks.any?
       nil
     end
-    if self.deck == nil
-      if self.decks.one?
-        self.decks.first
+    if current_deck == nil
+      if decks.one?
+        decks.first
       else
-        offset = rand(self.decks.count)
-        self.decks.offset(offset).first
+        offset = rand(decks.count)
+        decks.offset(offset).first
       end
     else
-      self.deck
+      current_deck
     end
   end
 
@@ -37,11 +43,11 @@ class User < ActiveRecord::Base
   end
 
   def for_review_counter
-    current_deck.for_review_counter
+    current_deck_or_any.cards.for_review
   end
 
   def for_review
-    current_deck.for_review
+    current_deck_or_any.cards.random
   end
 
   def has_linked_github?

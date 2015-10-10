@@ -50,19 +50,22 @@ ActiveRecord::Schema.define(version: 20151006193601) do
 
   add_index "decks", ["user_id"], name: "index_decks_on_user_id", using: :btree
 
+  create_table "stable", id: false, force: :cascade do |t|
+    t.boolean "yo"
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",            null: false
+    t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "deck_id"
+    t.integer  "current_deck_id"
   end
 
-  add_index "users", ["deck_id"], name: "index_users_on_deck_id", using: :btree
+  add_index "users", ["current_deck_id"], name: "index_users_on_current_deck_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "cards", "decks"
   add_foreign_key "decks", "users"
-  add_foreign_key "users", "decks"
 end
