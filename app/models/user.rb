@@ -27,10 +27,10 @@ class User < ActiveRecord::Base
       nil
     end
 
-    if current_deck.nil?
+    if not current_deck.nil?
       current_deck.cards
     else
-      current_deck.user.cards
+      cards
     end
   end
 
