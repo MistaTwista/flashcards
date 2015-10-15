@@ -52,7 +52,7 @@ class Card < ActiveRecord::Base
   def self.new_with_new_deck(card_params, deck_params, user)
     new_deck = Deck.create(name: deck_params[:name], user: user)
     card_params[:deck_id] = new_deck.id
-    card = Card.new(card_params)
+    Card.new(card_params)
   end
 
   protected
