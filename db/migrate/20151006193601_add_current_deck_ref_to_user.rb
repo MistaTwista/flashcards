@@ -7,7 +7,7 @@ class AddCurrentDeckRefToUser < ActiveRecord::Migration
       dir.up do
         say_with_time "Changing tables to use Default deck..." do
           User.all.each do |u|
-            u.update_columns(current_deck_id: Deck.create(name: "Default deck", user: u));
+            u.update_columns(current_deck_id: Deck.create(name: "Default deck", user: u))
             u.cards.each do |c|
               c.deck = u.current_deck_id
               c.save!

@@ -3,30 +3,22 @@ class CardsController < ApplicationController
   before_action :set_user_decks, only: [:index, :update, :edit]
 
   def redirect_to_new_deck(message: "At lease one deck needed")
-    redirect_to(new_deck_path, flash: { info: message })
+    redirect_to new_deck_path, flash: { info: message }
   end
 
   def index
-    if current_user.decks.any?
-      @cards = current_user.current_deck_or_any.cards
-    else
-      redirect_to_new_deck
-    end
+    current_user.decks.empty? ? redirect_to_new_deck : @cards = current_user.current_deck_or_any.cards
   end
 
   def show
   end
 
   def new
-    if current_user.decks.any?
-      @card = Card.new
-    else
-      redirect_to_new_deck
-    end
+    current_user.decks.empty? ? redirect_to_new_deck : @card = Card.new
   end
 
   def create
-    @card = current_user.current_deck_or_any.cards.new(card_params)
+    @card = Card.new(card_params)
     if @card.save
       redirect_to @card
     else
@@ -43,6 +35,7 @@ class CardsController < ApplicationController
   end
 
   def edit
+    # @new_deck = Deck.new
   end
 
   def destroy
@@ -58,6 +51,10 @@ class CardsController < ApplicationController
 
   def find_card
     @card = Card.find(params[:id])
+  end
+
+  def deck_params
+    params.require(:new_deck).permit(:name)
   end
 
   def card_params

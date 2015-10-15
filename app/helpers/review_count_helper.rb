@@ -11,6 +11,7 @@ module ReviewCountHelper
       end
     end
   end
+
   def current_deck_name
     current_user.current_deck_or_any.name if current_user.decks.any?
   end

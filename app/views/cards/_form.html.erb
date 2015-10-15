@@ -2,6 +2,13 @@
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
   <%= f.input :deck_id, collection: current_user.decks, as: :radio_buttons %>
+  <div class="form-group string required card_translated_text">
+    <label class="string required control-label" for="card_new_deck_name">
+      ...or add new one
+    </label>
+    <%= text_field_tag 'new_deck[name]', nil, class: "string required form-control" %>
+  </div>
   <%= f.input :picture, as: :file %>
   <%= f.button :submit %>
 <% end %>
+<%= card.methods %>

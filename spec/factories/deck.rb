@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :deck, aliases: [:current_deck] do
-    name "Default deck"
+  factory :deck do
+    name "Factory default deck"
     user
   end
 end
