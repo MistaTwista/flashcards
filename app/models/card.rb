@@ -42,17 +42,16 @@ class Card < ActiveRecord::Base
     for_review.offset(offset).first
   end
 
-  def self.update_with_new_deck(card_params, deck_params)
-    new_deck = Deck.create(deck_params)
+  def self.update_with_new_deck(card, card_params, deck_params, user)
+    new_deck = Deck.create(name: deck_params[:name], user: user)
     card_params[:deck_id] = new_deck.id
-    puts card_params[:deck_id]
-    card = Card.find(card_params)
+    current_card = Card.find(card)
+    current_card.update(card_params)
   end
 
-  def self.new_with_new_deck(card_params, deck_params)
-    new_deck = Deck.create(deck_params)
+  def self.new_with_new_deck(card_params, deck_params, user)
+    new_deck = Deck.create(name: deck_params[:name], user: user)
     card_params[:deck_id] = new_deck.id
-    puts card_params[:deck_id]
     card = Card.new(card_params)
   end
 

@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <% if logged_in? %>
-        <a class="navbar-brand" href="/"><%= t 'name' %> for <%= current_user.email %> (<%= current_deck_name %>)</a>
+        <a class="navbar-brand" href="/"><%= t 'name' %> for <%= current_user.email %> (<%= current_user.current_deck.name %>)</a>
       <% else %>
         <a class="navbar-brand" href="/"><%= t 'name' %></a>
       <% end %>

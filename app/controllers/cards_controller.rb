@@ -7,7 +7,7 @@ class CardsController < ApplicationController
   end
 
   def index
-    current_user.decks.empty? ? redirect_to_new_deck : @cards = current_user.current_deck_or_any.cards
+    current_user.decks.empty? ? redirect_to_new_deck : @cards = current_user.user_cards
   end
 
   def show
@@ -18,7 +18,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = new_card
     if @card.save
       redirect_to @card
     else
@@ -26,11 +26,27 @@ class CardsController < ApplicationController
     end
   end
 
+  def new_card
+    if params[:new_deck][:name].present?
+      Card.new_with_new_deck(card_params, deck_params, current_user)
+    else
+      Card.new(card_params)
+    end
+  end
+
   def update
-    if @card.update(card_params)
+    if update_card
       redirect_to @card
     else
       render "edit"
+    end
+  end
+
+  def update_card
+    if params[:new_deck][:name].present?
+      Card.update_with_new_deck(@card, card_params, deck_params, current_user)
+    else
+      @card.update(card_params)
     end
   end
 

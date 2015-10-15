@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   belongs_to :current_deck, class_name: "Deck"
   has_many :decks
   has_many :authentications, dependent: :destroy
-  has_many :cards
+  has_many :cards, through: :decks
 
   with_options if: :password_present? do |u|
     u.validates :password, length: { minimum: 3 }, on: [:create, :update]
@@ -22,23 +22,15 @@ class User < ActiveRecord::Base
     decks.create(name: "Default deck")
   end
 
-  def current_deck_or_any
+  def user_cards
     if not decks.any?
       nil
     end
-    if current_deck == nil
-      select_any_deck
-    else
-      current_deck
-    end
-  end
 
-  def select_any_deck
-    if decks.one?
-      current_deck = decks.first
+    if current_deck.nil?
+      current_deck.cards
     else
-      offset = rand(decks.count)
-      current_deck = decks.offset(offset).first
+      current_deck.user.cards
     end
   end
 
@@ -47,11 +39,11 @@ class User < ActiveRecord::Base
   end
 
   def for_review_counter
-    current_deck_or_any.cards.for_review if not current_deck_or_any.nil?
+    user_cards.for_review if not user_cards.nil?
   end
 
   def for_review
-    current_deck_or_any.cards.random if not current_deck_or_any.nil?
+    user_cards.random if not user_cards.nil?
   end
 
   def has_linked_github?
