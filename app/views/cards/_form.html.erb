@@ -6,7 +6,7 @@
     <label class="string required control-label" for="card_new_deck_name">
       ...or add new one
     </label>
-    <%= text_field_tag 'new_deck[name]', nil, class: "string required form-control" %>
+    <%= text_field_tag 'new_deck_name', nil, class: "string required form-control" %>
   </div>
   <%= f.input :picture, as: :file %>
   <%= f.button :submit %>

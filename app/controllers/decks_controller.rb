@@ -33,7 +33,7 @@ class DecksController < ApplicationController
   end
 
   def destroy
-    Deck.delete(params[:id])
+    current_user.decks.delete(params[:id])
     redirect_to decks_path
   end
 
