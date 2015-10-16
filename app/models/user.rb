@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :authentications, dependent: :destroy
   has_many :cards, through: :decks
 
-  with_options :if => lambda {|obj| puts obj.password.empty?} do |u|
+  with_options if: lambda { |obj| !obj.password.empty? } do |u|
     u.validates :password, length: { minimum: 3 }, on: [:create, :update]
     u.validates :password, confirmation: true, on: [:create, :update]
     u.validates :password_confirmation, presence: true, on: [:create, :update]
@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def all_or_current_deck_cards
-    if not current_deck.nil?
+    if !current_deck.nil?
       current_deck.cards
     else
       cards
