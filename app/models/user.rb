@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :authentications, dependent: :destroy
   has_many :cards, through: :decks
 
-  with_options if: lambda { |obj| !obj.password.empty? } do |u|
+  with_options if: lambda { |obj| obj.password.nil? } do |u|
     u.validates :password, length: { minimum: 3 }, on: [:create, :update]
     u.validates :password, confirmation: true, on: [:create, :update]
     u.validates :password_confirmation, presence: true, on: [:create, :update]
@@ -30,12 +30,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def for_review_counter
-    all_or_current_deck_cards.for_review if !all_or_current_deck_cards.nil?
+  def cards_for_review
+    all_or_current_deck_cards.for_review unless all_or_current_deck_cards.nil?
   end
 
-  def for_review
-    all_or_current_deck_cards.random if !all_or_current_deck_cards.nil?
+  def card_for_review
+    all_or_current_deck_cards.random unless all_or_current_deck_cards.nil?
   end
 
   def has_linked_github?

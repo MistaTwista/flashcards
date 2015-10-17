@@ -34,8 +34,7 @@ class Card < ActiveRecord::Base
   def self.update_with_new_deck(card, card_params, deck_params, user)
     new_deck = Deck.create(name: deck_params[:new_deck_name], user: user)
     card_params[:deck_id] = new_deck.id
-    # current_card = Card.find(card)
-    Card.update(card, card_params)
+    card.update(card_params)
   end
 
   def self.new_with_new_deck(card_params, deck_params, user)

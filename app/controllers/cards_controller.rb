@@ -10,7 +10,7 @@ class CardsController < ApplicationController
     if current_user.decks.empty?
       redirect_to_new_deck
     else
-      @cards = current_user.user_cards
+      @cards = current_user.all_or_current_deck_cards
     end
   end
 
