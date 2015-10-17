@@ -13,5 +13,6 @@
   <% end %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
+  <%= f.input :current_deck_id, collection: current_user.decks, as: :radio_buttons %>
   <%= f.button :submit %>
 <% end %>

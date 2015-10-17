@@ -1,0 +1,18 @@
+<div class="row">
+<% decks.each do |deck| %>
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <span class="panel-title"><%= link_to deck.name, deck %> (<%= deck.cards.count %>)</span>
+        <span class="pull-right">#<%= deck.id %></span>
+        <%= link_to(deck, method: :delete, data: { confirm: t('menu.confirm') }, title: t('menu.delete')) do %>
+          <span class="glyphicon glyphicon-remove white close" aria-hidden="true"></span>
+        <% end %>
+        <%= link_to(edit_deck_path(deck), title: t('menu.edit')) do %>
+          <span class="glyphicon glyphicon-edit white close" aria-hidden="true"></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

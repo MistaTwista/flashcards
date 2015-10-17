@@ -2,7 +2,7 @@ en:
   cards:
     original: "Original"
     translated: "Translated"
-    user: "User"
+    deck: "Deck"
     review_date: "Review date"
     index:
       h1: "All cards"

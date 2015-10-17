@@ -22,7 +22,3 @@ module UserHelper
     page.driver.submit :delete, logout_path, {}
   end
 end
-
-RSpec.configure do |config|
-  config.include UserHelper, type: :feature
-end

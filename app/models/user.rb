@@ -3,16 +3,40 @@ class User < ActiveRecord::Base
     config.authentications_class = Authentication
   end
 
+  after_create :add_current_deck
+
+  belongs_to :current_deck, class_name: "Deck"
+  has_many :decks
   has_many :authentications, dependent: :destroy
-  accepts_nested_attributes_for :authentications
+  has_many :cards, through: :decks
 
-  validates :password, length: { minimum: 3 }
-  validates :password, confirmation: true
-  validates :password_confirmation, presence: true
-
+  with_options if: lambda { |obj| obj.password.nil? } do |u|
+    u.validates :password, length: { minimum: 3 }, on: [:create, :update]
+    u.validates :password, confirmation: true, on: [:create, :update]
+    u.validates :password_confirmation, presence: true, on: [:create, :update]
+  end
   validates :email, uniqueness: true, presence: true, on: :create, email: true
   validates :email, email: true, on: :update
-  has_many :cards
+
+  def add_current_deck
+    decks.create(name: "Default deck")
+  end
+
+  def all_or_current_deck_cards
+    if !current_deck.nil?
+      current_deck.cards
+    else
+      cards
+    end
+  end
+
+  def cards_for_review
+    all_or_current_deck_cards.for_review unless all_or_current_deck_cards.nil?
+  end
+
+  def card_for_review
+    all_or_current_deck_cards.random unless all_or_current_deck_cards.nil?
+  end
 
   def has_linked_github?
     authentications.where(provider: 'github').present?

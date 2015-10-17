@@ -1,0 +1,9 @@
+<% content_for :title do %>
+  <%= " | " + t( 'menu.all_decks' ) %>
+<% end %>
+<h1><%= t( "cards.#{params[:action]}.h1" ) %></h1>
+<p><%= t( "cards.#{params[:action]}.total", count: @decks.count ) %></p>
+
+<%= render "decks", decks: @decks %>
+
+<p><%= link_to t( 'menu.add_deck' ), new_deck_path %></p>

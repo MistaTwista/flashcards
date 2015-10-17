@@ -1,5 +1,5 @@
 <h1><%= t("cards.#{params[:action]}.h1", card_name: @card.original_text) %></h1>
 
-<%= render "form", card: @card %>
+<%= render "form", card: @card, decks: @decks %>
 
 <p><%= link_to t('menu.back_to_card'), card_path %></p>

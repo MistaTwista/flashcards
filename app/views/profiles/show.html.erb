@@ -1,5 +1,14 @@
 <p>
   <strong>Email:</strong>
-  <%= current_user.email %> | <%= link_to 'Change password', edit_profile_path %>
+  <%= current_user.email %>
+</p>
+  <% if current_user.current_deck.present? %>
+    <p>
+      <strong>Current deck:</strong>
+      <%= current_user.current_deck.name %>
+    </p>
+  <% end %>
+<p>
+  <%= link_to 'Edit account', edit_profile_path %>
 </p>
 <%= render "shared/session_links" %>

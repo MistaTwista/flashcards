@@ -5,7 +5,8 @@ describe Card do
 
   it "false with original == translation" do
     user = build(:user, email: "deer@deer.ru")
-    card = build(:card, original_text: " оЛень  ", translated_text: "     ОлЕНЬ ", user: user)
+    deck = build(:deck, user: user)
+    card = build(:card, original_text: " оСень  ", translated_text: "     ОсЕНЬ ", deck: deck)
     expect(card).to be_invalid
   end
 

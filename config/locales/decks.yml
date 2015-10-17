@@ -1,0 +1,15 @@
+en:
+  decks:
+    name: "Deck name"
+    user: "User"
+    index:
+      h1: "All decks"
+      total: "Total: %{count}"
+    new:
+      h1: "Add deck"
+    edit:
+      h1: "Edit deck: %{deck_name}"
+    show:
+      h1: "Deck: %{deck_name}"
+    update:
+      h1: "Deck: %{deck_name}"

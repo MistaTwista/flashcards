@@ -1,0 +1,6 @@
+<h1><%= t( "decks.#{params[:action]}.h1", deck_name: @deck.name ) %></h1>
+<p><%= t "decks.name" %>: <%= @deck.name %></p>
+<% unless @deck.user.nil? %>
+  <p><%= t "decks.user" %>: <%= @deck.user.email %></p>
+<% end %>
+<p><%= link_to t( 'menu.edit_deck' ), edit_deck_path, class: "btn btn-default" %></p>

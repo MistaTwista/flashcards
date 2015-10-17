@@ -1,0 +1,5 @@
+<h1><%= t("decks.#{params[:action]}.h1", deck_name: @deck.name) %></h1>
+
+<%= render "form", deck: @deck %>
+
+<p><%= link_to t('menu.back_to_deck'), deck_path %></p>
