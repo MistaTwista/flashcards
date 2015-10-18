@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['DEV_PG_NAME'] %>
+  password: <%= ENV['DEV_PG_PASS'] %>
+
+development:
+  <<: *default
+  database: <%= ENV['DEV_DB_NAME'] %>
+
+test:
+  <<: *default
+  database: flashcards_test
+
+production:
+  <<: *default
+  host: <%= ENV['DB_HOST'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
