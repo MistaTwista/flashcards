@@ -12,7 +12,7 @@ class Card < ActiveRecord::Base
     1.week,
     2.weeks,
     1.month
-  ]
+  ].freeze
 
   MEMORY_LEVELS = LEITNER_TIME.length - 1
   ERRORS_TO_DECREASE = 3
