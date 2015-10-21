@@ -14,12 +14,23 @@ describe Card do
     expect(card.check_translation("ifdnq02")).to be false
   end
 
-  it "#review_date" do
-    expect(card.review_date).to eq(Date.today + 3.days)
+  it "card after true translation" do
+    Timecop.freeze(Time.now)
+    card.check_translation("deer")
+    expect(card.review_level).to eq(1)
+    expect(card.error_counter).to eq(0)
+    expect(card.review_date).to eq(Time.now + 12.hours)
+    Timecop.return
   end
 
-  it "#review_date after translation check" do
-    card.check_translation("face")
-    expect(card.review_date).to eq(Date.today + 3.days)
+  it "card after false translation" do
+    card.check_translation("deer")
+    card.check_translation("deer")
+    card.check_translation("false")
+    card.check_translation("false")
+    card.check_translation("false")
+    card.check_translation("false")
+    expect(card.review_level).to eq(1)
+    expect(card.error_counter).to eq(0)
   end
 end
