@@ -14,9 +14,8 @@ class Card < ActiveRecord::Base
     1.month
   ]
 
-  MEMORY_LEVELS = LEITNER_TIME.length-1
+  MEMORY_LEVELS = LEITNER_TIME.length - 1
   ERRORS_TO_DECREASE = 3
-
 
   has_attached_file :picture, styles: { medium: "360x360>", thumb: "50x50>" }, default_url: "/images/placeholder.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
@@ -55,24 +54,6 @@ class Card < ActiveRecord::Base
         self.error_counter += 1
         save
       end
-    end
-  end
-
-  def self.leitner_step(review_step)
-    today = Time.now
-    case review_step
-    when 1
-      today + 12.hours
-    when 2
-      today + 3.days
-    when 3
-      today + 1.week
-    when 4
-      today + 2.weeks
-    when 5
-      today + 1.month
-    else
-      today
     end
   end
 
