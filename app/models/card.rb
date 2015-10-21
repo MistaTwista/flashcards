@@ -36,7 +36,6 @@ class Card < ActiveRecord::Base
   def review_false
     current_level = self.review_level
     errors = self.error_counter
-    card_changed = false
     if current_level > 0
       if errors == 3
         self.review_level -= 1
@@ -52,18 +51,18 @@ class Card < ActiveRecord::Base
   def self.leitner_step(review_step)
     today = Time.now
     case review_step
-      when 1
-        today + 12.hours
-      when 2
-        today + 3.days
-      when 3
-        today + 1.week
-      when 4
-        today + 2.weeks
-      when 5
-        today + 1.month
-      else
-        today
+    when 1
+      today + 12.hours
+    when 2
+      today + 3.days
+    when 3
+      today + 1.week
+    when 4
+      today + 2.weeks
+    when 5
+      today + 1.month
+    else
+      today
     end
   end
 
