@@ -5,6 +5,19 @@ class Card < ActiveRecord::Base
 
   before_create :set_defaults
 
+  LEITNER_TIME = [
+    0,
+    12.hours,
+    3.days,
+    1.week,
+    2.weeks,
+    1.month
+  ]
+
+  MEMORY_LEVELS = LEITNER_TIME.length-1
+  ERRORS_TO_DECREASE = 3
+
+
   has_attached_file :picture, styles: { medium: "360x360>", thumb: "50x50>" }, default_url: "/images/placeholder.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
   validates :original_text, :translated_text, presence: true
@@ -14,30 +27,27 @@ class Card < ActiveRecord::Base
 
   def check_translation(translation)
     if translated_text == clear(translation)
-      review_true
+      increase_review_level
       return true
     else
-      review_false
+      decrease_review_level
       return false
     end
   end
 
-  def review_true
-    current_level = self.review_level
+  def increase_review_level
     self.error_counter = 0
-    if current_level < 5
+    if review_level < MEMORY_LEVELS
       self.review_level += 1
-      new_date = Card.leitner_step(review_level)
+      new_date = Time.now + LEITNER_TIME[review_level]
       self.review_date = new_date
     end
     save
   end
 
-  def review_false
-    current_level = self.review_level
-    errors = self.error_counter
-    if current_level > 0
-      if errors == 3
+  def decrease_review_level
+    if review_level > 0
+      if error_counter == ERRORS_TO_DECREASE
         self.review_level -= 1
         self.error_counter = 0
         save
