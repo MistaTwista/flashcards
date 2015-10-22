@@ -1,5 +1,10 @@
 en:
   messages:
     home:
+    review:
       success: "Yes, you right!"
       failure: "Nope, try again later!"
+      levenshtein:
+        one: " There was one error."
+        other: " There was %{count} errors."
+      words: " Right translation was %{in_card_word} and you entered %{entered_word}"
