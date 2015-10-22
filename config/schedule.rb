@@ -9,6 +9,6 @@
 #
 
 # Learn more: http://github.com/javan/whenever
-every :day, at: '0:30 am' do
+every :day, at: "0:30 am" do
   rake "mailer:notify_users_with_reviews_available"
 end
