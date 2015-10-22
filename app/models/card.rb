@@ -88,7 +88,5 @@ class Card < ActiveRecord::Base
 
   def set_defaults
     self.review_date = Time.now
-    self.review_level = 0
-    self.error_counter = 0
   end
 end
