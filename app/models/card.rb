@@ -14,7 +14,7 @@ class Card < ActiveRecord::Base
     1.month
   ].freeze
 
-  MEMORY_LEVELS = LEITNER_TIME.length - 1
+  REVIEW_LEVELS = LEITNER_TIME.length - 1
   ERRORS_TO_DECREASE = 3
 
   has_attached_file :picture, styles: { medium: "360x360>", thumb: "50x50>" }, default_url: "/images/placeholder.png"
@@ -36,7 +36,7 @@ class Card < ActiveRecord::Base
 
   def increase_review_level
     self.error_counter = 0
-    if review_level < MEMORY_LEVELS
+    if review_level < REVIEW_LEVELS
       self.review_level += 1
       new_date = Time.now + LEITNER_TIME[review_level]
       self.review_date = new_date
@@ -49,11 +49,10 @@ class Card < ActiveRecord::Base
       if error_counter == ERRORS_TO_DECREASE
         self.review_level -= 1
         self.error_counter = 0
-        save
       else
         self.error_counter += 1
-        save
       end
+      save
     end
   end
 
