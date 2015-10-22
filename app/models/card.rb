@@ -16,6 +16,7 @@ class Card < ActiveRecord::Base
 
   REVIEW_LEVELS = LEITNER_TIME.length - 1
   ERRORS_TO_DECREASE = 3
+  LEVENSHTEIN_DISTANCE_MAXIMUM = 2
 
   has_attached_file :picture, styles: { medium: "360x360>", thumb: "50x50>" }, default_url: "/images/placeholder.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
@@ -25,13 +26,15 @@ class Card < ActiveRecord::Base
   scope :for_review, -> { where("review_date < ?", Time.now) }
 
   def check_translation(translation)
-    if translated_text == clear(translation)
+    l_distance = Text::Levenshtein.distance(translated_text, clear(translation))
+    if l_distance < LEVENSHTEIN_DISTANCE_MAXIMUM
       increase_review_level
-      return true
+      correct = true
     else
       decrease_review_level
-      return false
+      correct = false
     end
+    { correct: correct, levenshtein_distance: l_distance }
   end
 
   def increase_review_level

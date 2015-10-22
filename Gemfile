@@ -12,7 +12,9 @@ gem 'pg'
 # Use Sorcery
 gem 'sorcery'
 # Use Paperclip
-gem "paperclip"
+gem 'paperclip'
+# Use Text for Levenshtein distance in Card
+gem 'text'
 # AWS
 gem 'aws-sdk', '< 2.0'
 # Use SCSS for stylesheets
