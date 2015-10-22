@@ -30,15 +30,15 @@ ActiveRecord::Schema.define(version: 20151019193654) do
     t.string   "original_text"
     t.string   "translated_text"
     t.datetime "review_date"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.integer  "deck_id"
-    t.integer  "review_level"
-    t.integer  "error_counter"
+    t.integer  "review_level",         default: 0
+    t.integer  "error_counter",        default: 0
   end
 
   add_index "cards", ["deck_id"], name: "index_cards_on_deck_id", using: :btree
