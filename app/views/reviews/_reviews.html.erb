@@ -1,5 +1,11 @@
 <% unless @card == nil %>
   <h2>Вспомни как переводится слово <%= @card.original_text %></h2>
+  <% if Rails.env.development? %>
+    <p>id: <%= @card.id %></p>
+    <p>review_date: <%= @card.review_date %></p>
+    <p>error_counter: <%= @card.error_counter %></p>
+    <p>review_level: <%= @card.review_level %></p>
+  <% end %>
   <p><%= image_tag @card.picture.url(:medium) %></p>
   <%= render "form", card: @card %>
 <% else %>

@@ -52,6 +52,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'launchy'
   gem 'meta_request'
+  gem 'timecop'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

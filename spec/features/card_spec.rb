@@ -4,7 +4,6 @@ describe Card do
   context "when review is right" do
     it 'answers "Yes, you right!"' do
       factory_card = create(:card)
-      factory_card.update_attribute(:review_date, Date.today - 5.days)
       factory_card.deck.user.current_deck = factory_card.deck
       factory_card.deck.user.save
       login_with("example@example.com", "123123")
@@ -20,7 +19,6 @@ describe Card do
   context "when review if wrong" do
     it 'answers "Nope, try again later"' do
       factory_card = create(:card)
-      factory_card.update_attribute(:review_date, Date.today - 5.days)
       factory_card.deck.user.current_deck = factory_card.deck
       factory_card.deck.user.save
       login_with("example@example.com", "123123")
