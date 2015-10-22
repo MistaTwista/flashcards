@@ -26,15 +26,15 @@ class Card < ActiveRecord::Base
   scope :for_review, -> { where("review_date < ?", Time.now) }
 
   def check_translation(translation)
-    l_distance = Text::Levenshtein.distance(translated_text, clear(translation) )
+    l_distance = Text::Levenshtein.distance(translated_text, clear(translation))
     if l_distance < LEVENSHTEIN_DISTANCE_MAXIMUM
       increase_review_level
-      translated = true
+      correct = true
     else
       decrease_review_level
-      translated = false
+      correct = false
     end
-    return {translated: translated, levenshtein_distance: l_distance}
+    { correct: correct, levenshtein_distance: l_distance }
   end
 
   def increase_review_level

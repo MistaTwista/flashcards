@@ -9,11 +9,11 @@ class ReviewsController < ApplicationController
     result = @card.check_translation(review_params[:translated_text])
     l_dist = result[:levenshtein_distance]
     words = t("messages.review.words",
-      in_card_word: @card.translated_text,
-      entered_word: review_params[:translated_text])
+              in_card_word: @card.translated_text,
+              entered_word: review_params[:translated_text])
     message = ""
-    if result[:translated]
-      message = t("messages.review.levenshtein", count: l_dist )
+    if result[:correct]
+      message = t("messages.review.levenshtein", count: l_dist)
       flash[:success] = t("messages.review.success") + message + words
     else
       flash[:danger] = t("messages.review.failure") + message

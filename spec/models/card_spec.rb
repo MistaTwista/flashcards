@@ -11,7 +11,7 @@ describe Card do
   end
 
   it "#check_translation" do
-    expect(card.check_translation("ifdnq02")[:translated]).to be false
+    expect(card.check_translation("ifdnq02")[:correct]).to be false
   end
 
   it "card after true translation" do
