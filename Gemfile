@@ -15,6 +15,8 @@ gem 'sorcery'
 gem 'paperclip'
 # Use Text for Levenshtein distance in Card
 gem 'text'
+# Whenever
+gem 'whenever', require: false
 # AWS
 gem 'aws-sdk', '< 2.0'
 # Use SCSS for stylesheets
