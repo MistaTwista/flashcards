@@ -1,8 +1,8 @@
 namespace :mailer do
   desc "Searching for users with cards for review available and notifying them"
   task notify_users_with_reviews_available: :environment do
-    User.all.each do |user|
-      cards_for_review = user.cards_for_review.count
+    User.get_review_counters.each do |user|
+      cards_for_review = user.for_review
       if cards_for_review > 1
         notify_about_cards_for_review(user)
       end

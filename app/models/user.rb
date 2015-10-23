@@ -41,4 +41,8 @@ class User < ActiveRecord::Base
   def has_linked_github?
     authentications.where(provider: 'github').present?
   end
+
+  def self.get_review_counters
+    User.joins(:cards).select("id", "email", "count(cards.id) as for_review").group("id")
+  end
 end
