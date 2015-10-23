@@ -44,10 +44,7 @@ class User < ActiveRecord::Base
 
   def self.get_review_counters
     User.joins(:cards).
-      select("id").
-      select("email").
-      select("count(cards.id) as for_review").
-      where("review_date < ?", Time.now).
-      group("id")
+      select("id", "email", "count(cards.id) as for_review").
+      where("review_date < ?", Time.now).group("id")
   end
 end
