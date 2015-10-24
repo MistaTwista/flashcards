@@ -33,4 +33,9 @@ describe Card do
     expect(card.review_level).to eq(1)
     expect(card.error_counter).to eq(0)
   end
+
+  it 'sends notification "Cards for review available"' do
+    User.notify_users_with_reviews_available
+    expect(ActionMailer::Base.deliveries.count).to eq(1)
+  end
 end
