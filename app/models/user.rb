@@ -20,9 +20,9 @@ class User < ActiveRecord::Base
 
   scope :for_review_counters_at, lambda { |time|
     joins(:cards).
-    select("id", "email", "count(cards.id) as for_review").
-    where("review_date < ?", time).
-    group("id")
+      select("id", "email", "count(cards.id) as for_review").
+      where("review_date < ?", time).
+      group("id")
   }
 
   CARDS_LIMIT_BEFORE_NOTIFY = 0
