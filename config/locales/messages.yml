@@ -8,3 +8,19 @@ en:
         one: " There was one error."
         other: " There was %{count} errors."
       words: " Right translation was %{in_card_word} and you entered %{entered_word}"
+    validator:
+      not:
+        email: "is not an email"
+ru:
+  messages:
+    home:
+    review:
+      success: "Да, вы правы!"
+      failure: "Увы, прийдется попробовать еще..."
+      levenshtein:
+        one: " Была одна ошибка."
+        other: " Было %{count} ошибок."
+      words: " Правильный перевод был %{in_card_word}, а вы ввели %{entered_word}"
+    validator:
+      not:
+        email: "скорее всего это не email"

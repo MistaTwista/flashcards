@@ -1,6 +1,7 @@
 en:
   decks:
     name: "Deck name"
+    default: "Default deck"
     user: "User"
     index:
       h1: "All decks"
@@ -13,3 +14,19 @@ en:
       h1: "Deck: %{deck_name}"
     update:
       h1: "Deck: %{deck_name}"
+ru:
+  decks:
+    name: "Имя колоды"
+    default: "Стандартная колода"
+    user: "Пользователь"
+    index:
+      h1: "Все колоды"
+      total: "Всего: %{count}"
+    new:
+      h1: "Добавить колоду"
+    edit:
+      h1: "Редактировать колоду: %{deck_name}"
+    show:
+      h1: "Колода: %{deck_name}"
+    update:
+      h1: "Колода: %{deck_name}"

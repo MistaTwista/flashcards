@@ -21,6 +21,7 @@
 
 en:
   name: "Flashcards"
+  for_user: " for %{user}"
   menu:
     reviews: "Reviews"
     all_cards: "All cards"
@@ -32,7 +33,9 @@ en:
     sign_in: "Sign in"
     sign_up: "Sign up"
     edit_card: "Edit card"
+    edit_deck: "Edit deck"
     back_to_card: "Back to card"
+    back_to_deck: "Back to deck"
     delete: "Delete"
     edit: "Edit"
     confirm: "Are you sure?"
@@ -41,3 +44,28 @@ en:
       search_btn: "Search"
     name:
       mobile: "MENU"
+ru:
+  name: "Flashcards"
+  for_user: " для %{user}"
+  menu:
+    reviews: "Ревью"
+    all_cards: "Все карты"
+    all_decks: "Все колоды"
+    all_users: "Все пользователи"
+    add_card: "Добавить карту"
+    add_deck: "Добавить колоду"
+    account: "Аккаунт"
+    sign_in: "Войти"
+    sign_up: "Зарегистрироваться"
+    edit_card: "Редактировать карту"
+    edit_deck: "Редактировать колоду"
+    back_to_card: "Назад к карте"
+    back_to_deck: "Назад к колоде"
+    delete: "Удалить"
+    edit: "Редактировать"
+    confirm: "Вы уверены?"
+    search:
+      placeholder: "Слон"
+      search_btn: "Найти"
+    name:
+      mobile: "МЕНЮ"

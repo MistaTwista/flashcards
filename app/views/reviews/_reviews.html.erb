@@ -1,5 +1,5 @@
 <% unless @card == nil %>
-  <h2>Вспомни как переводится слово <%= @card.original_text %></h2>
+  <h2><%= t('review.header', word: @card.original_text) %></h2>
   <% if Rails.env.development? %>
     <p>id: <%= @card.id %></p>
     <p>review_date: <%= @card.review_date %></p>
@@ -9,6 +9,6 @@
   <p><%= image_tag @card.picture.url(:medium) %></p>
   <%= render "form", card: @card %>
 <% else %>
-  <h2>Карточки кончились =)</h2>
-  <p>Попробуйте снова через пару дней</p>
+  <h2><%= t('review.empty') %></h2>
+  <p><%= t('review.try_again_later') %></p>
 <% end %>

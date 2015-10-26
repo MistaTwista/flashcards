@@ -3,6 +3,9 @@ en:
     original: "Original"
     translated: "Translated"
     deck: "Deck"
+    one_deck_needed: "At lease one deck needed"
+    for_review: "Need to review "
+    cant_be_equal: "can't be the same as Original text"
     review_date: "Review date"
     index:
       h1: "All cards"
@@ -15,3 +18,23 @@ en:
       h1: "Card: %{card_name}"
     update:
       h1: "Card: %{card_name}"
+ru:
+  cards:
+    original: "Оригинал"
+    translated: "Перевод"
+    deck: "Колода"
+    one_deck_needed: "Нужна хотя бы одна колода"
+    for_review: "Осталось вспомнить "
+    cant_be_equal: "перевод должен отличаться от оригинала"
+    review_date: "Дата проверки"
+    index:
+      h1: "Все карты"
+      total: "Всего: %{count}"
+    new:
+      h1: "Добавить карту"
+    edit:
+      h1: "Редактировать карту: %{card_name}"
+    show:
+      h1: "Карта: %{card_name}"
+    update:
+      h1: "Карта: %{card_name}"

@@ -9,4 +9,16 @@ en:
       It works!
       Always free!
       You will see the progress in 2 days!
-    detail_btn: "Details"
+    detail_btn: "Show me the details!"
+ru:
+  home:
+    header: "Flashcards – ваш путь к просветлению"
+    info: >
+      Все мы знакомы с игральными картами,
+      но игры не единственное их предназначение.
+      Flashcards – проект, нацеленный на изучение языков используя карточки.
+    benefits: |
+      Это работает!
+      Всегда останется бесплатным!
+      Вы увидите прогресс уже через 2 дня!
+    detail_btn: "Покажите подробности!"

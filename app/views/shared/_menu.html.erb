@@ -10,9 +10,12 @@
       </button>
       <% if logged_in? %>
         <a class="navbar-brand" href="/">
-          <%= t 'name' %> for <%= current_user.email %>
+          <%= t('name') %><%= t('for_user', user: current_user.email )%>
           <% if current_user.current_deck.present? %>
             (<%= current_user.current_deck.name %>)
+          <% end %>
+          <% if current_user.locale %>
+            <%= current_user.locale %>
           <% end %>
         </a>
       <% else %>
@@ -25,11 +28,15 @@
       <% if logged_in? %>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="<%= t 'menu.search.placeholder' %>">
+            <input type="text" class="form-control" placeholder="<%= t('menu.search.placeholder') %>">
           </div>
-          <button type="submit" class="btn btn-default"><%= t 'menu.search.search_btn' %></button>
+          <button type="submit" class="btn btn-default"><%= t('menu.search.search_btn') %></button>
         </form>
         <ul class="nav navbar-nav navbar-right">
+          <% unless current_user.locale %>
+            <li><a href="?locale=ru">RU</a></li>
+            <li><a href="?locale=en">EN</a></li>
+          <% end %>
           <li>
             <%= link_to new_review_path do %>
               <%= t('menu.reviews') %> <%= number_of_cards_for_review %>
@@ -46,8 +53,8 @@
               <li><%= link_to t('menu.all_decks'), decks_path %></li>
               <% if current_user %>
                 <li role="separator" class="divider"></li>
-                <li><%= link_to "Account", profile_path(current_user.id) %></li>
-                <li><%= link_to "Logout", :logout, method: :delete %></li>
+                <li><%= link_to t('menu.account'), profile_path(current_user.id) %></li>
+                <li><%= link_to t('auth.logout'), :logout, method: :delete %></li>
               <% else %>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to t('menu.sign_up'), new_registration_path %></li>
@@ -58,6 +65,8 @@
         </ul>
       <% else %>
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="?locale=ru">RU</a></li>
+          <li><a href="?locale=en">EN</a></li>
           <li><%= link_to t('menu.sign_up'), new_registration_path %></li>
           <li><%= link_to t('menu.sign_in'), :login %></li>
         </ul>

@@ -80,7 +80,7 @@ class Card < ActiveRecord::Base
 
   def not_equal_fields
     if clear(original_text) == clear(translated_text)
-      errors.add(:translated_text, "can't be the same as Original text")
+      errors.add(:translated_text, I18n.t('cards.cant_be_equal'))
     end
   end
 

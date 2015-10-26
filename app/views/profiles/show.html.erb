@@ -1,14 +1,14 @@
 <p>
-  <strong>Email:</strong>
+  <strong><%= t('user.email') %></strong>
   <%= current_user.email %>
 </p>
-  <% if current_user.current_deck.present? %>
-    <p>
-      <strong>Current deck:</strong>
-      <%= current_user.current_deck.name %>
-    </p>
-  <% end %>
+<% if current_user.current_deck.present? %>
+  <p>
+    <strong><%= t('user.current_deck') %></strong>
+    <%= current_user.current_deck.name %>
+  </p>
+<% end %>
 <p>
-  <%= link_to 'Edit account', edit_profile_path %>
+  <%= link_to t('user.edit.link'), edit_profile_path %>
 </p>
 <%= render "shared/session_links" %>

@@ -1,0 +1,8 @@
+en:
+  notify:
+    cards:
+      available: "Cards for review available"
+ru:
+  notify:
+    cards:
+      available: "Доступны карты для проверки"
