@@ -34,8 +34,8 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
           <% unless current_user.locale %>
-            <li><a href="?locale=ru">RU</a></li>
-            <li><a href="?locale=en">EN</a></li>
+            <li><%= link_to "RU", params.merge(:locale => "ru") %></li>
+            <li><%= link_to "EN", params.merge(:locale => "en") %></li>
           <% end %>
           <li>
             <%= link_to new_review_path do %>
@@ -54,21 +54,21 @@
               <% if current_user %>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to t("menu.account"), profile_path(current_user.id) %></li>
-                <li><%= link_to t("auth.logout"), :logout, method: :delete %></li>
+                <li><%= link_to t("auth.logout"), logout_path, method: :delete %></li>
               <% else %>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to t("menu.sign_up"), new_registration_path %></li>
-                <li><%= link_to t("menu.sign_in"), :login %></li>
+                <li><%= link_to t("menu.sign_in"), login_path %></li>
               <% end %>
             </ul>
           </li>
         </ul>
       <% else %>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="?locale=ru">RU</a></li>
-          <li><a href="?locale=en">EN</a></li>
+          <li><%= link_to "RU", params.merge(:locale => "ru") %></li>
+          <li><%= link_to "EN", params.merge(:locale => "en") %></li>
           <li><%= link_to t("menu.sign_up"), new_registration_path %></li>
-          <li><%= link_to t("menu.sign_in"), :login %></li>
+          <li><%= link_to t("menu.sign_in"), login_path %></li>
         </ul>
       <% end %>
     </div><!-- /.navbar-collapse -->
