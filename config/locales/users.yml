@@ -1,14 +1,50 @@
 en:
-  users:
+  user:
     email: "Email"
     password: "Password"
+    current_deck: "Current deck:"
     index:
       h1: "All users"
     new:
       h1: "Add user"
     edit:
+      link: "Edit account"
       h1: "Edit user: %{user_name}"
     show:
       h1: "User: %{user_name}"
     create:
       h1: "Add user"
+    updated: "User was successfully updated."
+    destroyed: "User was successfully destroyed."
+    created: "User was sucessfully created"
+    editing: "Editing User"
+    listing: "Listing Users"
+    save:
+      error:
+        one: "%{error_count} error prohibited this user from being saved:"
+        other: "%{error_count} errors prohibited this user from being saved:"
+ru:
+  user:
+    email: "Email"
+    password: "Пароль"
+    current_deck: "Текущая колода:"
+    index:
+      h1: "Все пользователи"
+    new:
+      h1: "Добавить пользователя"
+    edit:
+      link: "Редактировать аккаунт"
+      h1: "Редактируем пользователя: %{user_name}"
+    show:
+      h1: "Пользователь: %{user_name}"
+    create:
+      h1: "Добавить пользователя"
+    updated: "Пользователь обновлен."
+    destroyed: "Пользователь удален."
+    created: "Пользователь зарегистрирован"
+    editing: "Редактировать пользователя"
+    listing: "Пользователи"
+    save:
+      error:
+        one: "%{error_count} ошибка:"
+        other: "%{error_count} ошибок:"

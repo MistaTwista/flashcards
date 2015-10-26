@@ -1,0 +1,36 @@
+en:
+  auth:
+    currently: "Currently logged in as: %{username}"
+    logged_in: "Logged in using %{provider}!"
+    link_after_sign_in: 'You are required to link your GitHub account before you can use this feature. You can do this by clicking "Link your Github account" after you sign in.'
+    unlinked_successfully: "You have successfully unlinked your %{provider} account."
+    linked_successfully: "You have successfully linked your %{provider} account."
+    not_linked: "You do not currently have a linked %{provider} account."
+    link_problem: "There was a problem linking your %{provider} account."
+    unlink_github: "Unlink your Github account"
+    link_github: "Link your GitHub account"
+    logout: "Logout"
+    login_github: "Login using Github"
+    login:
+      first: "Please login first"
+      ok: "Login successful"
+      failed: "Login failed"
+      out: "Logged out!"
+ru:
+  auth:
+    currently: "Вы вошли как: %{username}"
+    logged_in: "Войти через %{provider}!"
+    link_after_sign_in: "Сначала нужно зарегистрироваться. Можно привязать аккаунт к существующей учетной записи."
+    unlinked_successfully: "Вы отключили ваш %{provider} аккаунт."
+    linked_successfully: "Вы успешно подключили ваш %{provider} аккаунт."
+    not_linked: "У вас нет подключенного %{provider} аккаунта."
+    link_problem: "Возникла проблема при подключении %{provider} аккаунта."
+    unlink_github: "Отключить Github аккаунт"
+    link_github: "Подключить Github аккаунт"
+    logout: "Выйти"
+    login_github: "Войти используя Github"
+    login:
+      first: "Пожалуйста войтите в систему для начала работы"
+      ok: "Вы успешно вошли"
+      failed: "Вход не удался =("
+      out: "Вы вышли из системы!"

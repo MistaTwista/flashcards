@@ -17,6 +17,8 @@ gem 'paperclip'
 gem 'text'
 # Whenever
 gem 'whenever', require: false
+# Accept-Language from browser
+gem 'http_accept_language'
 # AWS
 gem 'aws-sdk', '< 2.0'
 # Use SCSS for stylesheets

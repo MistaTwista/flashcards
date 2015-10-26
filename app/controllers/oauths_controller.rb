@@ -9,14 +9,14 @@ class OauthsController < ApplicationController
   def callback
     provider = auth_params[:provider]
     if @user = login_from(provider)
-      flash[:info] = "Logged in using #{provider.titleize}!"
+      flash[:info] = t("auth.logged_in", provider: provider.titleize)
       redirect_to root_path
     else
       if logged_in?
         link_account(provider)
         redirect_to root_path
       else
-        flash[:alert] = 'You are required to link your GitHub account before you can use this feature. You can do this by clicking "Link your Github account" after you sign in.'
+        flash[:alert] = t("auth.link_after_sign_in")
         redirect_to login_path
       end
     end
@@ -28,9 +28,9 @@ class OauthsController < ApplicationController
     authentication = current_user.authentications.find_by_provider(provider)
     if authentication.present?
       authentication.destroy
-      flash[:info] = "You have successfully unlinked your #{provider.titleize} account."
+      flash[:info] = t("auth.unlinked_successfully", provider: provider.titleize)
     else
-      flash[:alert] = "You do not currently have a linked #{provider.titleize} account."
+      flash[:alert] = t("auth.not_linked", provider: provider.titleize)
     end
 
     redirect_to root_path
@@ -40,9 +40,9 @@ class OauthsController < ApplicationController
 
   def link_account(provider)
     if @user = add_provider_to_user(provider)
-      flash[:notice] = "You have successfully linked your GitHub account."
+      flash[:notice] = t("auth.linked_successfully", provider: provider.titleize)
     else
-      flash[:alert] = "There was a problem linking your GitHub account."
+      flash[:alert] = t("auth.link_problem", provider: provider.titleize)
     end
   end
 

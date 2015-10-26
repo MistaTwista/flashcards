@@ -10,10 +10,10 @@ class User < ActiveRecord::Base
   has_many :authentications, dependent: :destroy
   has_many :cards, through: :decks
 
-  with_options if: lambda { |obj| obj.password.nil? } do |u|
-    u.validates :password, length: { minimum: 3 }, on: [:create, :update]
-    u.validates :password, confirmation: true, on: [:create, :update]
-    u.validates :password_confirmation, presence: true, on: [:create, :update]
+  with_options on: [:create, :update], if: lambda { |obj| obj.password.nil? } do |u|
+    u.validates :password, length: { minimum: 3 }
+    u.validates :password, confirmation: true
+    u.validates :password_confirmation, presence: true
   end
   validates :email, uniqueness: true, presence: true, on: :create, email: true
   validates :email, email: true, on: :update
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   CARDS_LIMIT_BEFORE_NOTIFY = 0
 
   def add_current_deck
-    decks.create(name: "Default deck")
+    decks.create(name: I18n.t("decks.default"))
   end
 
   def all_or_current_deck_cards

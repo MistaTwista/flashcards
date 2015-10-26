@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-  # отвечает за редактирование профиля
   skip_before_action :require_login, only: [:new, :create]
 
   def show
@@ -10,7 +9,7 @@ class ProfilesController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_to profile_path, flash: { warning: "User was successfully updated." }
+      redirect_to profile_path, flash: { warning: t("user.updated") }
     else
       render :edit
     end
@@ -18,12 +17,12 @@ class ProfilesController < ApplicationController
 
   def destroy
     current_user.destroy
-    redirect_to users_url, flash: { warning: "User was successfully destroyed." }
+    redirect_to users_url, flash: { warning: t("user.destroyed") }
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:password, :password_confirmation, :current_deck_id)
+    params.require(:user).permit(:password, :password_confirmation, :current_deck_id, :locale)
   end
 end

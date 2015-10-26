@@ -1,0 +1,10 @@
+en:
+  review:
+    header: "Remember translation of %{word}"
+    empty: "There are no cards for review =)"
+    try_again_later: "Try again later!"
+ru:
+  review:
+    header: "Вспомни как переводится слово %{word}"
+    empty: "Карточки кончились =)"
+    try_again_later: "Попробуйте снова через пару дней"

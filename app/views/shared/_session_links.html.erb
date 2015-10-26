@@ -1,15 +1,15 @@
 <div>
   <% if logged_in? %>
-    Currently logged in as: <%= current_user.email %> |
+    <%= t("auth.currently", username: current_user.email) %> |
 
     <% if current_user.has_linked_github? %>
-      <%= link_to 'Unlink your Github account', delete_oauth_path('github'), method: :delete %>
+      <%= link_to t("auth.unlink_github"), delete_oauth_path("github"), method: :delete %>
     <% else %>
-      <%= link_to 'Link your GitHub account', auth_at_provider_path(provider: :github) %>
+      <%= link_to t("auth.link_github"), auth_at_provider_path(provider: :github) %>
     <% end %> |
 
-    <%= link_to "Logout", :logout, method: :delete %>
+    <%= link_to t("auth.logout"), :logout, method: :delete %>
   <% else %>
-    <%= link_to 'Login using Github', auth_at_provider_path(provider: :github) %>
+    <%= link_to t("auth.login_github"), auth_at_provider_path(provider: :github) %>
   <% end %>
 </div>

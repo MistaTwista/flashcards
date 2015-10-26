@@ -8,13 +8,24 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     labels:
+      review:
+        translated_text: "Translation"
+      user_sessions:
+        email: "Enter email"
+        password: "Enter password"
+      deck:
+        name: "Deck name"
       card:
+        deck_id: "Deck"
+        new_deck: "...or add new one"
+        picture: "Picture"
         original_text: "Enter original text"
         translated_text: "Enter translation"
         edit:
           original_text: "Edit original text"
           translated_text: "Edit translation"
       user:
+        current_deck_id: "Current deck"
         email: "Enter email"
         password: "Enter password"
         password_confirmation: "Confirm password"
@@ -31,6 +42,13 @@ en:
         password: "JAj31!!"
   helpers:
     submit:
+      review:
+        submit: "Check"
+      user_sessions:
+        submit: "Login"
+      deck:
+        create: "Create"
+        update: "Update"
       card:
         create: "Create card"
         update: "Edit card"
@@ -41,6 +59,68 @@ en:
       registrations:
         create: "Register"
         update: "Save"
+ru:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'обязательно'
+      mark: '*'
+    error_notification:
+      default_message: "Пожалуйста проверьте ошибки:"
+    labels:
+      review:
+        translated_text: "Перевод"
+      user_sessions:
+        email: "Введите email"
+        password: "Введите пароль"
+      deck:
+        name: "Имя колоды"
+      card:
+        deck_id: "Колода"
+        new_deck: "...или добавьте новую"
+        picture: "Картинка"
+        original_text: "Введите оригинальное слово"
+        translated_text: "Введите слово перевод"
+        edit:
+          original_text: "Редактировать оригинальное слово"
+          translated_text: "Редактировать перевод"
+      user:
+        email: "Введите email"
+        password: "Введите пароль"
+        password_confirmation: "Подтвердите пароль"
+        edit:
+          current_deck_id: "Текущая колода"
+          email: "Новый email"
+          password: "Новый пароль"
+          password_confirmation: "Подтвердите пароль"
+    placeholders:
+      card:
+        original_text: "Розовый слон"
+        translated_text: "Pink elephant"
+      user:
+        email: "name@example.com"
+        password: "JAj31!!"
+  helpers:
+    submit:
+      review:
+        submit: "Проверить"
+      user_sessions:
+        submit: "Войти"
+      deck:
+        create: "Добавить"
+        update: "Обновить"
+      card:
+        create: "Создать карту"
+        update: "Редактировать карту"
+      user:
+        submit: "Обновить"
+        new: "Регистрация"
+        create: "Зарегистрироваться"
+        update: "Обновить"
+      registrations:
+        create: "Регистрация"
+        update: "Обновить"
     # Examples
     # labels:
     #   defaults:
@@ -60,3 +140,4 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+

@@ -3,20 +3,23 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only"><%= t 'menu.name.mobile' %></span>
+        <span class="sr-only"><%= t("menu.name.mobile") %></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
       <% if logged_in? %>
         <a class="navbar-brand" href="/">
-          <%= t 'name' %> for <%= current_user.email %>
+          <%= t("name") %><%= t("for_user", user: current_user.email )%>
           <% if current_user.current_deck.present? %>
             (<%= current_user.current_deck.name %>)
           <% end %>
+          <% if current_user.locale %>
+            <%= current_user.locale %>
+          <% end %>
         </a>
       <% else %>
-        <a class="navbar-brand" href="/"><%= t 'name' %></a>
+        <a class="navbar-brand" href="/"><%= t("name") %></a>
       <% end %>
     </div>
 
@@ -25,41 +28,47 @@
       <% if logged_in? %>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="<%= t 'menu.search.placeholder' %>">
+            <input type="text" class="form-control" placeholder="<%= t("menu.search.placeholder") %>">
           </div>
-          <button type="submit" class="btn btn-default"><%= t 'menu.search.search_btn' %></button>
+          <button type="submit" class="btn btn-default"><%= t("menu.search.search_btn") %></button>
         </form>
         <ul class="nav navbar-nav navbar-right">
+          <% unless current_user.locale %>
+            <li><%= link_to "RU", params.merge(:locale => "ru") %></li>
+            <li><%= link_to "EN", params.merge(:locale => "en") %></li>
+          <% end %>
           <li>
             <%= link_to new_review_path do %>
-              <%= t('menu.reviews') %> <%= number_of_cards_for_review %>
+              <%= t("menu.reviews") %> <%= number_of_cards_for_review %>
             <% end %>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t 'menu.account' %><span class="caret"></span></a>
             <ul class="dropdown-menu">
               <% if current_user.decks.any? %>
-                <li><%= link_to t('menu.add_card'), new_card_path %></li>
-                <li><%= link_to t('menu.all_cards'), cards_path %></li>
+                <li><%= link_to t("menu.add_card"), new_card_path %></li>
+                <li><%= link_to t("menu.all_cards"), cards_path %></li>
               <% end %>
-              <li><%= link_to t('menu.add_deck'), new_deck_path %></li>
-              <li><%= link_to t('menu.all_decks'), decks_path %></li>
+              <li><%= link_to t("menu.add_deck"), new_deck_path %></li>
+              <li><%= link_to t("menu.all_decks"), decks_path %></li>
               <% if current_user %>
                 <li role="separator" class="divider"></li>
-                <li><%= link_to "Account", profile_path(current_user.id) %></li>
-                <li><%= link_to "Logout", :logout, method: :delete %></li>
+                <li><%= link_to t("menu.account"), profile_path(current_user.id) %></li>
+                <li><%= link_to t("auth.logout"), logout_path, method: :delete %></li>
               <% else %>
                 <li role="separator" class="divider"></li>
-                <li><%= link_to t('menu.sign_up'), new_registration_path %></li>
-                <li><%= link_to t('menu.sign_in'), :login %></li>
+                <li><%= link_to t("menu.sign_up"), new_registration_path %></li>
+                <li><%= link_to t("menu.sign_in"), login_path %></li>
               <% end %>
             </ul>
           </li>
         </ul>
       <% else %>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to t('menu.sign_up'), new_registration_path %></li>
-          <li><%= link_to t('menu.sign_in'), :login %></li>
+          <li><%= link_to "RU", params.merge(:locale => "ru") %></li>
+          <li><%= link_to "EN", params.merge(:locale => "en") %></li>
+          <li><%= link_to t("menu.sign_up"), new_registration_path %></li>
+          <li><%= link_to t("menu.sign_in"), login_path %></li>
         </ul>
       <% end %>
     </div><!-- /.navbar-collapse -->
