@@ -8,14 +8,14 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     locale = if current_user && current_user.locale
-              current_user.locale
-            elsif params[:locale]
-              session[:locale] = params[:locale]
-            elsif session[:locale]
-              session[:locale]
-            else
-              http_accept_language.compatible_language_from(I18n.available_locales)
-            end
+               current_user.locale
+             elsif params[:locale]
+               session[:locale] = params[:locale]
+             elsif session[:locale]
+               session[:locale]
+             else
+               http_accept_language.compatible_language_from(I18n.available_locales)
+             end
     if locale && I18n.available_locales.include?(locale.to_sym)
       session[:locale] = I18n.locale = locale.to_sym
     end
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless logged_in?
-      redirect_to(login_path, flash: { info: t("auth.login") } )
+      redirect_to(login_path, flash: { info: t("auth.login") })
     end
   end
 end
