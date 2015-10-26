@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   before_action :find_card, only: [:show, :update, :edit]
   before_action :set_user_decks, only: [:index, :update, :edit]
 
-  def redirect_to_new_deck(message: t('cards.one_deck_needed') )
+  def redirect_to_new_deck(message: t("cards.one_deck_needed") )
     redirect_to new_deck_path, flash: { info: message }
   end
 

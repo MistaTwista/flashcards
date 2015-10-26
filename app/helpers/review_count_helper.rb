@@ -1,5 +1,5 @@
 module ReviewCountHelper
-  def number_of_cards_for_review(show_text: false, text: t('cards.for_review'))
+  def number_of_cards_for_review(show_text: false, text: t("cards.for_review"))
     if current_user.decks.any?
       if show_text
         content_tag :p do

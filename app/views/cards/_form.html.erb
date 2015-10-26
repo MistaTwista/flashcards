@@ -7,7 +7,7 @@
               checked: current_user.current_deck.id unless current_user.current_deck.nil? %>
   <div class="form-group string required card_translated_text">
     <label class="string required control-label" for="card_new_deck_name">
-      <%= t('simple_form.labels.card.new_deck') %>
+      <%= t("simple_form.labels.card.new_deck") %>
     </label>
     <%= text_field_tag 'new_deck_name', nil, class: "string required form-control" %>
   </div>

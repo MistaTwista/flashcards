@@ -5,10 +5,10 @@
       <div class="panel-heading">
         <span class="panel-title"><%= link_to profile.email, profile %></span>
         <span class="pull-right">#<%= profile.id %></span>
-        <%= link_to(profile, method: :delete, data: { confirm: t('menu.confirm') }, title: t('menu.delete')) do %>
+        <%= link_to(profile, method: :delete, data: { confirm: t("menu.confirm") }, title: t("menu.delete")) do %>
           <span class="glyphicon glyphicon-remove white close" aria-hidden="true"></span>
         <% end %>
-        <%= link_to(edit_profile_path(profile), title: t('menu.edit')) do %>
+        <%= link_to(edit_profile_path(profile), title: t("menu.edit")) do %>
           <span class="glyphicon glyphicon-edit white close" aria-hidden="true"></span>
         <% end %>
       </div>

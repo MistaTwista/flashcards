@@ -20,7 +20,7 @@ ru:
   auth:
     currently: "Вы вошли как: %{username}"
     logged_in: "Войти через %{provider}!"
-    link_after_sign_in: 'Сначала нужно зарегистрироваться. Можно привязать аккаунт к существующей учетной записи.'
+    link_after_sign_in: "Сначала нужно зарегистрироваться. Можно привязать аккаунт к существующей учетной записи."
     unlinked_successfully: "Вы отключили ваш %{provider} аккаунт."
     linked_successfully: "Вы успешно подключили ваш %{provider} аккаунт."
     not_linked: "У вас нет подключенного %{provider} аккаунта."

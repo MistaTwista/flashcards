@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   CARDS_LIMIT_BEFORE_NOTIFY = 0
 
   def add_current_deck
-    decks.create(name: I18n.t('decks.default'))
+    decks.create(name: I18n.t("decks.default"))
   end
 
   def all_or_current_deck_cards

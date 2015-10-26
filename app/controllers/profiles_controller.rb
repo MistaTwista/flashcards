@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_to profile_path, flash: { warning: t('user.updated') }
+      redirect_to profile_path, flash: { warning: t("user.updated") }
     else
       render :edit
     end
@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     current_user.destroy
-    redirect_to users_url, flash: { warning: t('user.destroyed') }
+    redirect_to users_url, flash: { warning: t("user.destroyed") }
   end
 
   private

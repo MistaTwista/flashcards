@@ -9,7 +9,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_to(new_card_path, flash: { info: t('user.created') })
+      redirect_to(new_card_path, flash: { info: t("user.created") })
     else
       render :new
     end
