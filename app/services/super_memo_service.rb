@@ -2,7 +2,7 @@ class SuperMemoService
   def next_step(quality, easiness_factor, previous_interval)
     if previous_interval.nil?
       new_i = 1
-    elsif previous_interval==1
+    elsif previous_interval == 1
       new_i = 6
     else
       new_ef = get_new_ef(easiness_factor, quality)
@@ -13,7 +13,7 @@ class SuperMemoService
   end
 
   def get_new_ef(ef, q)
-    new_ef = ef+(0.1-(5-q)*(0.08+(5-q)*0.02))
+    new_ef = ef + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))
     if new_ef > 1.3
       new_ef
     else

@@ -38,7 +38,7 @@ $(document).ready(function() {
   })();
 
   if (form) {
-    var timer = setInterval(function(){ counter.add() }, 1000);
+    setInterval(function(){ counter.add(); }, 1000);
   }
 
   form.submit(function(event) {
