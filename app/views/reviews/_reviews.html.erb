@@ -2,6 +2,8 @@
   <h2><%= t("review.header", word: @card.original_text) %></h2>
   <% if Rails.env.development? %>
     <p>id: <%= @card.id %></p>
+    <p>memo_ef: <%= @card.memo_ef %></p>
+    <p>memo_interval: <%= @card.memo_interval %></p>
     <p>review_date: <%= @card.review_date %></p>
     <p>error_counter: <%= @card.error_counter %></p>
     <p>review_level: <%= @card.review_level %></p>

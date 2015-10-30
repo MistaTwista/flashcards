@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    result = @card.check_translation(review_params[:translated_text])
+    result = @card.check_translation(review_params[:translated_text], review_params[:timer])
     l_dist = result[:levenshtein_distance]
     words = t("messages.review.words",
               in_card_word: @card.translated_text,
@@ -28,6 +28,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:translated_text, :card_id)
+    params.require(:review).permit(:translated_text, :card_id, :timer)
   end
 end

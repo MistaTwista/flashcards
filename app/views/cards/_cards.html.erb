@@ -16,6 +16,8 @@
         <%= image_tag card.picture.url(:thumb) %>
         <%= card.translated_text %>
         <% if Rails.env.development? %>
+          <p>memo_ef: <%= card.memo_ef %></p>
+          <p>memo_interval: <%= card.memo_interval %></p>
           <p>id: <%= card.id %></p>
           <p>review_date: <%= card.review_date %></p>
           <p>error_counter: <%= card.error_counter %></p>
