@@ -7,10 +7,6 @@ class Card < ActiveRecord::Base
 
   ERRORS_TO_DECREASE = 3
   LEVENSHTEIN_DISTANCE_MAXIMUM = 2
-  SECONDS_TO_ANSWER = {
-    fast: 8,
-    slow: 15,
-  }.freeze
 
   has_attached_file :picture, styles: { medium: "360x360>", thumb: "50x50>" }, default_url: "/images/placeholder.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/

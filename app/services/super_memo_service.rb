@@ -1,4 +1,9 @@
 class SuperMemoService
+  SECONDS_TO_ANSWER = {
+    fast: 8,
+    slow: 15,
+  }.freeze
+
   def next_step(correct, time, easiness_factor, previous_interval)
     q = 0
     q = quality_from_timer(time) if correct
