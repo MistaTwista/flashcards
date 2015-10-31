@@ -1,5 +1,6 @@
-<%= simple_form_for :review, url: reviews_path, method: 'post' do |f| %>
+<%= simple_form_for :review, url: reviews_path, method: 'post', html: { id: 'review_form' } do |f| %>
   <%= f.input :translated_text, input_html: { value: '' }, autofocus: true %>
   <%= f.input :card_id, as: :hidden, input_html: { value: card.id } %>
+  <%= f.input :timer, as: :hidden, input_html: { value: '5', id: 'review_timer' } %>
   <%= f.button :submit %>
 <% end %>

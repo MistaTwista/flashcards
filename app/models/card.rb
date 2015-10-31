@@ -5,16 +5,6 @@ class Card < ActiveRecord::Base
 
   before_create :set_defaults
 
-  LEITNER_TIME = [
-    0,
-    12.hours,
-    3.days,
-    1.week,
-    2.weeks,
-    1.month
-  ].freeze
-
-  REVIEW_LEVELS = LEITNER_TIME.length - 1
   ERRORS_TO_DECREASE = 3
   LEVENSHTEIN_DISTANCE_MAXIMUM = 2
 
@@ -25,38 +15,24 @@ class Card < ActiveRecord::Base
   validate :not_equal_fields
   scope :for_review, -> { where("review_date < ?", Time.now) }
 
-  def check_translation(translation)
+  def check_translation(translation, time)
     l_distance = Text::Levenshtein.distance(translated_text, clear(translation))
     if l_distance < LEVENSHTEIN_DISTANCE_MAXIMUM
-      increase_review_level
       correct = true
     else
-      decrease_review_level
       correct = false
     end
+    get_next_interval(correct, time)
     { correct: correct, levenshtein_distance: l_distance }
   end
 
-  def increase_review_level
-    self.error_counter = 0
-    if review_level < REVIEW_LEVELS
-      self.review_level += 1
-      new_date = Time.now + LEITNER_TIME[review_level]
-      self.review_date = new_date
-    end
+  def get_next_interval(correct, time)
+    sm = SuperMemoService.new
+    next_step = sm.next_step(correct, time, memo_ef, memo_interval)
+    self.memo_ef = next_step[:new_ef]
+    self.memo_interval = next_step[:new_i]
+    self.review_date = Time.now + memo_interval.seconds
     save
-  end
-
-  def decrease_review_level
-    if review_level > 0
-      if error_counter == ERRORS_TO_DECREASE
-        self.review_level -= 1
-        self.error_counter = 0
-      else
-        self.error_counter += 1
-      end
-      save
-    end
   end
 
   def self.random
