@@ -23,36 +23,20 @@ class Card < ActiveRecord::Base
     l_distance = Text::Levenshtein.distance(translated_text, clear(translation))
     if l_distance < LEVENSHTEIN_DISTANCE_MAXIMUM
       correct = true
-      get_next_interval(correct, time)
     else
       correct = false
-      get_next_interval(correct, time)
     end
+    get_next_interval(correct, time)
     { correct: correct, levenshtein_distance: l_distance }
   end
 
   def get_next_interval(correct, time)
     sm = SuperMemoService.new
-    if correct
-      q = quality_from_timer(time)
-    else
-      q = 0
-    end
-    next_step = sm.next_step(q, memo_ef, memo_interval)
+    next_step = sm.next_step(correct, time, memo_ef, memo_interval)
     self.memo_ef = next_step[:new_ef]
     self.memo_interval = next_step[:new_i]
     self.review_date = Time.now + memo_interval.seconds
     save
-  end
-
-  def quality_from_timer(time)
-    if time.to_i > SECONDS_TO_ANSWER[:slow]
-      3
-    elsif time.to_i > SECONDS_TO_ANSWER[:fast]
-      4
-    else
-      5
-    end
   end
 
   def self.random
